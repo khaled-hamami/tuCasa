@@ -2,7 +2,7 @@ import React from 'react'
 import { Box, Button } from '@mui/material'
 import { useNavigate } from 'react-router-dom'
 
-function LoginButton() {
+function LoginButton({ width }) {
    const navigate = useNavigate()
 
    const handleLogin = () => {
@@ -17,13 +17,14 @@ function LoginButton() {
             onClick={handleLogin}
             variant="contained"
             sx={{
+               width: { width },
                p: '.5rem 1.5rem',
                fontWeight: 'bold',
                backgroundColor: 'secondary.dark',
                color: 'primary.light',
                '&:hover': {
                   backgroundColor: 'primary.light',
-                  color: 'secondary.dark',
+                  color: 'info.main',
                },
             }}
          >

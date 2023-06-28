@@ -19,7 +19,7 @@ const CustomNavLink = styled(NavLink)(({ theme }) => ({
       bottom: '0',
       width: '0',
       height: '2px',
-      backgroundColor: theme.palette.secondary.main,
+      backgroundColor: theme.palette.info.main,
       transform: 'translateX(-50%)',
       transition: 'width 0.3s',
    },

@@ -1,32 +1,36 @@
 import React from 'react'
-import { Box, IconButton } from '@mui/material'
+import { Box } from '@mui/material'
 import { createTheme } from '@mui/material'
 import Logo from './Logo'
 import Links from './Links'
 import LoginButton from './LoginButton'
 import Search from './Search'
 
+import { purple ,red } from '@mui/material/colors'
 export const lightTheme = createTheme({
    palette: {
+      background: '#FFF',
       mode: 'light',
       primary: {
-         main: '#FAFAFA',
+         main: '#EDEDED',
          light: '#FFF',
-         dark: '#F0F0F0',
+         dark: '#E6E6E6',
       },
       secondary: {
-         main: '#3C3C3C',
+         main: '#212121',
          light: '#3D3D3D',
          dark: '#000',
       },
+      
    },
 })
 
 export const darkTheme = createTheme({
    palette: {
+      background: '#000',
       mode: 'dark',
       primary: {
-         main: '#3C3C3C',
+         main: '#212121',
          light: '#3D3D3D',
          dark: '#000',
       },
@@ -35,6 +39,7 @@ export const darkTheme = createTheme({
          light: '#FFF',
          dark: '#F0F0F0',
       },
+  
    },
 })
 
@@ -43,7 +48,7 @@ function Navbar({ theme, setTheme }) {
       theme === lightTheme ? setTheme(darkTheme) : setTheme(lightTheme)
    }
    return (
-      <Box position="sticky" top="0">
+      <Box position="sticky" top="0" zIndex="1" border="solid rgba(0,0,0,.2) 1px">
          <Box
             sx={{
                display: 'flex',
