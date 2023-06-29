@@ -7,7 +7,7 @@ function SignUpLink() {
    return (
       <Box display="flex" gap="5px">
          <Typography color="secondary.main" ml="28px">
-            Don't have an account ?
+            Vous n'avez pas de compte ?
          </Typography>
          <Typography
             onClick={() => navigate('/signup')}
@@ -18,7 +18,7 @@ function SignUpLink() {
                '&:hover': { color: 'info.dark' },
             }}
          >
-            Sign up
+            Inscrivez-vous
          </Typography>
       </Box>
    )

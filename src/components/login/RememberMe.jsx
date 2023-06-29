@@ -5,8 +5,8 @@ function RememberMe() {
    return (
       <FormControlLabel
          labelPlacement="start"
-         label="remember me"
-         control={<Checkbox defaultChecked color='info'/>}
+         label="Se souvenir de moi"
+         control={<Checkbox defaultChecked color="info" />}
          sx={{ flexDirection: 'row' }}
       />
    )

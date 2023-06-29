@@ -29,23 +29,23 @@ const CustomNavLink = styled(NavLink)(({ theme }) => ({
    },
 }))
 
-const active = {}
+const active = { color: '#0288d1' }
 
 function Links() {
    const location = useLocation()
    return (
       <Stack direction="row" spacing={2} display="flex" justifyContent="space-evenly">
          <CustomNavLink to="/" style={location.pathname === '/' ? active : null}>
-            Home
+            Accueil
          </CustomNavLink>
          <CustomNavLink to="/rentals" style={location.pathname === '/rentals' ? active : null}>
-            Rentals
+            Locations
          </CustomNavLink>
          <CustomNavLink to="/login" style={location.pathname === '/login' ? active : null}>
-            Login
+            Se connecter
          </CustomNavLink>
          <CustomNavLink to="/about" style={location.pathname === '/about' ? active : null}>
-            About
+            à Propos
          </CustomNavLink>
       </Stack>
    )

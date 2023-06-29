@@ -1,17 +1,17 @@
 import React from 'react'
 import { Box, Paper, Typography } from '@mui/material'
-import RememberMe from './RememberMe'
+import TextFieldPassword from '../login/TextFieldPassword'
+import RememberMe from '../login/RememberMe'
 import LoginButton from '../navbar/LoginButton'
-import SignUpLink from './SignUpLink'
-import ForgotYourPassword from './ForgotYourPassword'
-import TextFieldPassword from './TextFieldPassword'
-import TextFieldEmail from './TextFieldEmail'
+import TextFieldEmail from '../login/TextFieldEmail'
+import TextFieldName from './TextFieldName'
+import TextFieldLastName from './TextFieldLastName'
 
-function LoginForm() {
+function SignUpForm() {
    return (
       <Box
          sx={{
-            width: { xs: '80%', sm: '65%', md: '30%' },
+            width: { xs: '80%', sm: '65%', md: '45%' },
             minWidth: '350px',
             paddingTop: '100px  ',
             margin: 'auto',
@@ -36,18 +36,19 @@ function LoginForm() {
             }}
          >
             <Typography variant="h4" color="secondary.dark" textAlign="center" fontWeight="bold">
-               Se connecter
+               S'inscrire
             </Typography>
-
+            <Box display="flex" justifyContent="space-between" gap='15px'  p="0 30px">
+               <TextFieldLastName />
+               <TextFieldName  />
+            </Box>
             <TextFieldEmail />
             <TextFieldPassword />
             <RememberMe />
             <LoginButton width="40%" />
-            <SignUpLink />
-            <ForgotYourPassword />
          </Paper>
       </Box>
    )
 }
 
-export default LoginForm
+export default SignUpForm

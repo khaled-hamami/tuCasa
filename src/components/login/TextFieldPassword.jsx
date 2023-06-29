@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { Box, TextField } from '@mui/material'
 
-function SearchFieldPassword() {
+function TextFieldPassword() {
    const [Password, SetPassword] = useState('')
    const [PasswordLength, setPasswordLength] = useState(0)
 
@@ -18,7 +18,7 @@ function SearchFieldPassword() {
             required
             color="info"
             id="password-form-input"
-            label="password"
+            label="mot de passe"
             variant="standard"
             type="password"
             fullWidth
@@ -27,4 +27,4 @@ function SearchFieldPassword() {
    )
 }
 
-export default SearchFieldPassword
+export default TextFieldPassword

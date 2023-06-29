@@ -1,13 +1,9 @@
 import React from 'react'
-import { Box, Paper, Typography } from '@mui/material'
-import RememberMe from './RememberMe'
-import LoginButton from '../navbar/LoginButton'
-import SignUpLink from './SignUpLink'
-import ForgotYourPassword from './ForgotYourPassword'
-import TextFieldPassword from './TextFieldPassword'
-import TextFieldEmail from './TextFieldEmail'
+import { Box, Paper,  Typography } from '@mui/material'
+import ThemeToogler from './ThemeToogler'
 
-function LoginForm() {
+
+function Settings() {
    return (
       <Box
          sx={{
@@ -30,24 +26,17 @@ function LoginForm() {
                flexDirection: 'column',
                width: '100%',
                justifyContent: 'space-around',
-               boxShadow: 'rgb(red)',
                height: 'clamp(500px ,40vw , 700px)',
                p: { xs: '10px 5px', sm: '20px 20px', md: '60px 30px' },
             }}
          >
             <Typography variant="h4" color="secondary.dark" textAlign="center" fontWeight="bold">
-               Se connecter
+               Settings
             </Typography>
-
-            <TextFieldEmail />
-            <TextFieldPassword />
-            <RememberMe />
-            <LoginButton width="40%" />
-            <SignUpLink />
-            <ForgotYourPassword />
+            <ThemeToogler />
          </Paper>
       </Box>
    )
 }
 
-export default LoginForm
+export default Settings

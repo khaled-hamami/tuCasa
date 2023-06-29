@@ -1,20 +1,20 @@
 import React from 'react'
 import { Box, TextField } from '@mui/material'
 
-function SearchFieldEmail() {
+function TextFieldLastName() {
    return (
-      <Box p="0  30px">
+      <Box>
          <TextField
             required
             color="info"
-            id="email-form-input"
-            label="email"
+            id="name-form-input"
+            label="Prénom"
             variant="standard"
-            type="email"
+            type="text"
             fullWidth
          />
       </Box>
    )
 }
 
-export default SearchFieldEmail
+export default TextFieldLastName
