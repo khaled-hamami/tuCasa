@@ -1,0 +1,386 @@
+{
+   "data": [
+      {
+         "id": 0,
+         "open": false,
+         "name": "Tunis",
+         "delegations": [
+            "Tunis",
+            "Le Bardo",
+            "La Goulette",
+            "Le Kram",
+            "La Marsa",
+            "Sidi Bou Said",
+            "Carthage",
+            "Sidi Hassine",
+            "La Mannouba",
+            "Douar Hicher",
+            "El Omrane",
+            "Ezzouhour",
+            "El Kabaria",
+            "El Menzah",
+            "Ariana",
+            "Raoued"
+         ]
+      },
+
+      {
+         "id": 1,
+         "open": false,
+         "name": "Nabeul",
+         "delegations": [
+            "Béni Khalled",
+            "Bou Argoub",
+            "Dar Chaabane El Fehri",
+            "El Haouaria",
+            "El Mida",
+            "Grombalia",
+            "Hammam Ghezèze",
+            "Hammamet",
+            "Kelibia",
+            "Korba",
+            "Menzel Bouzelfa",
+            "Menzel Temime",
+            "Nabeul",
+            "Soliman",
+            "Takelsa"
+         ]
+      },
+      {
+         "id": 2,
+         "open": false,
+         "name": "Zaghouan",
+         "delegations": [
+            "Zaghouan",
+            "Bir Mcherga",
+            "Djebel Oust",
+            "El Fahs",
+            "Nadhour",
+            "Saouaf",
+            "Zriba"
+         ]
+      },
+      {
+         "id": 3,
+         "open": false,
+         "name": "Gafsa",
+         "delegations": [
+            "Gafsa",
+            "Belkhir",
+            "El Guettar",
+            "El Ksar",
+            "Mdhilla",
+            "Metlaoui",
+            "Moularès",
+            "Redeyef",
+            "Sidi Aïch",
+            "Sned"
+         ]
+      },
+      {
+         "id": 4,
+         "open": false,
+         "name": "Tozeur",
+         "delegations": ["Degache", "Hazoua", "Nefta", "Tameghza", "Tozeur"]
+      },
+      {
+         "id": 5,
+         "open": false,
+         "name": "Sousse",
+         "delegations": [
+            "Sousse",
+            "Hammam Sousse",
+            "Kalâa Kebira",
+            "Kalâa Seghira",
+            "Msaken",
+            "Akouda",
+            "Ezzouhour",
+            "Enfida",
+            "Hergla",
+            "Kondar",
+            "Zaouiet Sousse"
+         ]
+      },
+      {
+         "id": 6,
+         "open": false,
+         "name": "Kasserine",
+         "delegations": [
+            "Kasserine Nord",
+            "Kasserine Sud",
+            "Foussana",
+            "Sbeïtla",
+            "Sbiba",
+            "Jedelienne",
+            "Thala",
+            "Majel Bel Abbès",
+            "Hassi El Ferid",
+            "Ezzouhour"
+         ]
+      },
+      {
+         "id": 7,
+         "open": false,
+         "name": "Béja",
+         "delegations": [
+            "Béja Nord",
+            "Béja Sud",
+            "Amdoun",
+            "Goubellat",
+            "Medjez el-Bab",
+            "Nefza",
+            "Teboursouk",
+            "Testour",
+            "Thibar"
+         ]
+      },
+      {
+         "id": 8,
+         "open": false,
+         "name": "Siliana",
+         "delegations": [
+            "Siliana Nord",
+            "Siliana Sud",
+            "Bargou",
+            "El Krib",
+            "Gaâfour",
+            "Kesra",
+            "Makthar",
+            "Rouhia"
+         ]
+      },
+      {
+         "id": 9,
+         "open": false,
+         "name": "Bizerte",
+         "delegations": [
+            "Bizerte Nord",
+            "Bizerte Sud",
+            "Menzel Bourguiba",
+            "Mateur",
+            "Ras Jebel",
+            "Sejnane",
+            "Ghar El Melh",
+            "Utique",
+            "El Alia"
+         ]
+      },
+      {
+         "id": 10,
+         "open": false,
+         "name": "Jendouba",
+         "delegations": [
+            "Jendouba",
+            "Aïn Draham",
+            "Balta-Bou Aouane",
+            "Bou Salem",
+            "Fernana",
+            "Ghardimaou",
+            "Oued Melliz",
+            "Tabarka"
+         ]
+      },
+      {
+         "id": 11,
+         "open": false,
+         "name": "Kebili",
+         "delegations": [
+            "Kebili Nord",
+            "Kebili Sud",
+            "Douz Nord",
+            "Douz Sud",
+            "Souk Lahad",
+            "Faouar"
+         ]
+      },
+      {
+         "id": 12,
+         "open": false,
+         "name": "Siliana",
+         "delegations": [
+            "Siliana Nord",
+            "Siliana Sud",
+            "Bargou",
+            "El Krib",
+            "Gaâfour",
+            "Makthar",
+            "Rouhia"
+         ]
+      },
+      {
+         "id": 13,
+         "open": false,
+         "name": "Manouba",
+         "delegations": [
+            "Manouba",
+            "Den Den",
+            "Douar Hicher",
+            "Oued Ellil",
+            "Borj El Amri",
+            "Djedeida",
+            "Tebourba",
+            "Mornaguia"
+         ]
+      },
+      {
+         "id": 14,
+         "open": false,
+         "name": "Monastir",
+         "delegations": [
+            "Monastir",
+            "Bembla",
+            "Jemmal",
+            "Ksar Hellal",
+            "Ksibet el-Médiouni",
+            "Moknine",
+            "Ouerdanine",
+            "Sahline",
+            "Sayada-Lamta-Bou Hajar",
+            "Téboulba",
+            "Zéramdine"
+         ]
+      },
+      {
+         "id": 15,
+         "open": false,
+         "name": "Sfax",
+         "delegations": [
+            "Sfax Ville",
+            "Sakiet Ezzit",
+            "Chihia",
+            "Sakiet Eddaier",
+            "Gremda",
+            "El Amra",
+            "Sfax Ouest",
+            "Sfax Sud",
+            "Jebeniana",
+            "El Hencha",
+            "Agareb",
+            "Thyna",
+            "Skhira",
+            "Mahres",
+            "Kerkennah"
+         ]
+      },
+      {
+         "id": 16,
+         "open": false,
+         "name": "Sidi Bouzid",
+         "delegations": [
+            "Sidi Bouzid Est",
+            "Sidi Bouzid Ouest",
+            "Jilma",
+            "Cebalet",
+            "Meknassy",
+            "Mezzouna",
+            "Regueb",
+            "Menzel Bouzaiane",
+            "Ouled Haffouz",
+            "Souk Jedid"
+         ]
+      },
+      {
+         "id": 17,
+         "open": false,
+         "name": "Medenine",
+         "delegations": [
+            "Medenine Nord",
+            "Medenine Sud",
+            "Beni Khedache",
+            "Ben Guerdane",
+            "Zarzis",
+            "Djerba - Houmt Souk",
+            "Djerba - Midoun"
+         ]
+      },
+      {
+         "id": 18,
+         "open": false,
+         "name": "Gabes",
+         "delegations": [
+            "Gabes Medina",
+            "Gabes Ouest",
+            "Gabes Sud",
+            "El Metouia",
+            "Mareth",
+            "Nouvelle Matmata",
+            "Matmata"
+         ]
+      },
+      {
+         "id": 19,
+         "open": false,
+         "name": "Kairouan",
+         "delegations": [
+            "Kairouan Nord",
+            "Kairouan Sud",
+            "Chebika",
+            "Sbikha",
+            "Oueslatia",
+            "Haffouz",
+            "Bou Hajla",
+            "Nasrallah"
+         ]
+      },
+      {
+         "id": 20,
+         "open": false,
+         "name": "Ariana",
+         "delegations": [
+            "Ariana Ville",
+            "Ettadhamen-Mnihla",
+            "Kalâat el-Andalous",
+            "La Soukra",
+            "Mnihla",
+            "Raoued",
+            "Sidi Thabet"
+         ]
+      },
+      {
+         "id": 21,
+         "open": false,
+         "name": "Mahdia",
+         "delegations": [
+            "Mahdia",
+            "Bou Merdes",
+            "Chebba",
+            "El Jem",
+            "Essouassi",
+            "Hebira",
+            "Ksour Essef",
+            "Melloulèche",
+            "Ouled Chamekh",
+            "Sidi Alouane"
+         ]
+      },
+      {
+         "id": 22,
+         "open": false,
+         "name": "Tataouine",
+         "delegations": [
+            "Tataouine Nord",
+            "Tataouine Sud",
+            "Bir Lahmar",
+            "Ghomrassen",
+            "Dehiba",
+            "Smâr",
+            "Remada"
+         ]
+      },
+      {
+         "id": 23,
+         "open": false,
+         "name": "Ben Arous",
+         "delegations": [
+            "El Mourouj",
+            "Ezzahra",
+            "Hammam Chott",
+            "Hammam Lif",
+            "Medina Jedida",
+            "Mégrine",
+            "Mohamedia",
+            "Radès"
+         ]
+      }
+   ]
+}

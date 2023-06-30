@@ -25,14 +25,14 @@ function Navbar({ toogleButton }) {
             <Box flex="2">
                <Logo />
             </Box>
-            <Box sx={{flex:'6', display: { xs: 'none', md: 'block' } }}>
+            <Box sx={{ flex: '6', display: { xs: 'none', md: 'block' } }}>
                <Links />
             </Box>
             <Box flex="3" sx={{ display: { xs: 'none', sm: 'block' } }}>
                <Search />
             </Box>
             <Box flex="1">
-               <LoginButton />
+               <LoginButton content="connexion" />
             </Box>
             <Box flex=".5">{toogleButton}</Box>
          </Box>

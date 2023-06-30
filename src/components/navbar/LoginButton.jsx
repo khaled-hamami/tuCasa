@@ -1,7 +1,7 @@
 import React from 'react'
 import { Box, Button } from '@mui/material'
 
-function LoginButton({ width }) {
+function LoginButton({ width, content }) {
    return (
       <Box sx={{ display: 'flex', justifyContent: 'center' }}>
          <Button
@@ -18,7 +18,7 @@ function LoginButton({ width }) {
                },
             }}
          >
-            Connexion
+            {content}
          </Button>
       </Box>
    )

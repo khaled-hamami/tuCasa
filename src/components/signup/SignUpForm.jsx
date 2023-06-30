@@ -38,14 +38,13 @@ function SignUpForm() {
             <Typography variant="h4" color="secondary.dark" textAlign="center" fontWeight="bold">
                S'inscrire
             </Typography>
-            <Box display="flex" justifyContent="space-between" gap='15px'  p="0 30px">
+            <Box display="flex" justifyContent="space-between" gap="15px" p="0 30px">
                <TextFieldLastName />
-               <TextFieldName  />
+               <TextFieldName />
             </Box>
             <TextFieldEmail />
             <TextFieldPassword />
-            <RememberMe />
-            <LoginButton width="40%" />
+            <LoginButton width="56%" content="Créer un compte" />
          </Paper>
       </Box>
    )

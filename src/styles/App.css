@@ -6,10 +6,18 @@
 body {
    height: 100%;
 }
+body::-webkit-scrollbar {
+   width: 12px;
+}
+body::-webkit-scrollbar-thumb {
+   border-radius: 8px;
+   background-color: #363636;
+}
 #root {
    width: 100%;
    height: auto;
 }
+
 /* h4 {
    letter-spacing: -5%;
 } */

@@ -4,13 +4,14 @@ import { NavLink, useLocation } from 'react-router-dom'
 import styled from '@emotion/styled'
 
 const CustomNavLink = styled(NavLink)(({ theme }) => ({
-   fontSize: { xs: '1rem', sm: '1.2rem' },
+   fontSize: { xs: '4rempx', sm: '4rem' },
    fontWeight: 'bold',
    textDecoration: 'none',
    color: theme.palette.secondary.main,
    position: 'relative',
    display: 'inline-block',
    overflow: 'hidden',
+
 
    '&::after': {
       content: '""',

@@ -1,21 +1,13 @@
 import React from 'react'
 import { Box, Paper, Typography } from '@mui/material'
-import RememberMe from './RememberMe'
-import LoginButton from '../navbar/LoginButton'
-import SignUpLink from './SignUpLink'
-import ForgotYourPassword from './ForgotYourPassword'
-import TextFieldPassword from './TextFieldPassword'
-import TextFieldEmail from './TextFieldEmail'
 
-function LoginForm() {
+function RentCard() {
    return (
       <Box
          sx={{
-            width: { xs: '80%', sm: '65%', md: '30%' },
-            minWidth: '350px',
+            width: { xs: '90%', md: '45%' },
             paddingTop: '100px  ',
             margin: 'auto',
-            height: '100%',
             display: 'flex',
             justifyContent: 'center',
             alignItems: 'center',
@@ -38,16 +30,9 @@ function LoginForm() {
             <Typography variant="h4" color="secondary.dark" textAlign="center" fontWeight="bold">
                Se connecter
             </Typography>
-
-            <TextFieldEmail />
-            <TextFieldPassword />
-            <RememberMe />
-            <LoginButton width="40%" content="Connexion" />
-            <SignUpLink />
-            <ForgotYourPassword />
          </Paper>
       </Box>
    )
 }
 
-export default LoginForm
+export default RentCard

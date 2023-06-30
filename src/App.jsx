@@ -1,9 +1,8 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { BrowserRouter as Router } from 'react-router-dom'
 import { Routes, Route } from 'react-router'
 import Home from './pages/Home'
 import Navbar from './components/navbar/Navbar'
-// import { lightTheme, darkTheme } from './components/UIsettings/ThemeToogler'
 import { Box, ThemeProvider, createTheme } from '@mui/material'
 import './styles/App.css'
 import Rentals from './pages/Rentals'
@@ -52,15 +51,37 @@ function App() {
 
    document.body.style.backgroundColor = theme.palette.primary.main
 
+   //set the theme as well as store it in localp storage
+   const handleLightTheme = () => {
+      setTheme(lightTheme)
+      localStorage.setItem('Theme', 'lightTheme')
+   }
+
+   //set the theme as well as store it in localp storage
+   const handleDarkTheme = () => {
+      setTheme(darkTheme)
+      localStorage.setItem('Theme', 'darkTheme')
+   }
+
+   // set the theme stored in  local storage as soon as the component fires up
+   useEffect(() => {
+      try {
+         localStorage.getItem('Theme') === 'lightTheme' ? setTheme(lightTheme) : setTheme(darkTheme)
+      } catch {
+         null
+      }
+   }, [])
+
    return (
       <Box sx={{ height: '100%', backgroundColor: theme.palette.primary.main }}>
          <ThemeProvider theme={theme}>
             <Router>
                <Navbar
+                  //theme button toogler
                   toogleButton={
                      <Box
                         onClick={() =>
-                           theme === darkTheme ? setTheme(lightTheme) : setTheme(darkTheme)
+                           theme === darkTheme ? handleLightTheme() : handleDarkTheme()
                         }
                      >
                         <ThemeToogler />
