@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
-import Box from '@mui/material/Box'
 import { IconButton } from '@mui/material'
-import MenuIcon from '@mui/icons-material/Menu'
-import DrawerMenu from './DrawerMenu'
 import { Clear } from '@mui/icons-material'
+import MenuIcon from '@mui/icons-material/Menu'
+import { Box } from '@mui/material'
+import DrawerMenu from './DrawerMenu'
 
 function MobileDrawer() {
    const [isMenuOpen, setMenuOpen] = useState(false)
@@ -29,7 +29,7 @@ function MobileDrawer() {
             <IconButton onClick={openMenu}>
                <MenuIcon />
             </IconButton>
-            <IconButton onClick={closeMenu}>{isMenuOpen && <Clear fontSize='large' />}</IconButton>
+            <IconButton onClick={closeMenu}>{isMenuOpen && <Clear fontSize="large" />}</IconButton>
          </Box>
          {isMenuOpen && <DrawerMenu />}
       </Box>

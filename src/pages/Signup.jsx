@@ -1,5 +1,5 @@
-import { Box } from '@mui/material'
 import React from 'react'
+import { Box } from '@mui/material'
 import SignUpForm from '../components/signup/SignUpForm'
 
 function Signup() {

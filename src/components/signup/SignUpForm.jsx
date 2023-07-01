@@ -1,7 +1,6 @@
 import React from 'react'
 import { Box, Paper, Typography } from '@mui/material'
 import TextFieldPassword from '../login/TextFieldPassword'
-import RememberMe from '../login/RememberMe'
 import LoginButton from '../navbar/LoginButton'
 import TextFieldEmail from '../login/TextFieldEmail'
 import TextFieldName from './TextFieldName'

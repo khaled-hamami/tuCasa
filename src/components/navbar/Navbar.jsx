@@ -22,10 +22,10 @@ function Navbar({ toogleButton }) {
                p: '.7rem 0',
             }}
          >
-            <Box flex="2">
+            <Box flex="2.4">
                <Logo />
             </Box>
-            <Box sx={{ flex: '6', display: { xs: 'none', md: 'block' } }}>
+            <Box sx={{ flex: '6.2', display: { xs: 'none', md: 'block' } }}>
                <Links />
             </Box>
             <Box flex="3" sx={{ display: { xs: 'none', sm: 'block' } }}>

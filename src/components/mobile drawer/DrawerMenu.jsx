@@ -1,16 +1,9 @@
 import React, { useState } from 'react'
-import ListSubheader from '@mui/material/ListSubheader'
-import List from '@mui/material/List'
-import ListItemButton from '@mui/material/ListItemButton'
-import ListItemText from '@mui/material/ListItemText'
-import Collapse from '@mui/material/Collapse'
-import ExpandLess from '@mui/icons-material/ExpandLess'
-import ExpandMore from '@mui/icons-material/ExpandMore'
-import { Flag } from '@mui/icons-material'
-import { Box, ListItemIcon } from '@mui/material'
-import StatesData from '../city list/data.json'
-const StateList = StatesData.data
 import '../../styles/CustomScrollBar.css'
+import { Box, ListItemIcon, Collapse, List, ListItemButton, ListItemText } from '@mui/material'
+import StatesData from '../city list/data.json'
+
+const StateList = StatesData.data
 
 function DrawerMenu({ display }) {
    const [States, setStatesData] = useState(StateList)
@@ -19,9 +12,8 @@ function DrawerMenu({ display }) {
          className="custom-scrollbar"
          sx={{
             position: 'fixed',
-            height: '900px',
+            height: '75vh',
             width: '100%',
-            
             overflowY: 'scroll',
             bgcolor: 'primary.light',
             color: 'secondary.main',

@@ -1,6 +1,6 @@
 import React from 'react'
-import { Box, Typography } from '@mui/material'
 import { useNavigate } from 'react-router'
+import { Box, Typography } from '@mui/material'
 
 function SignUpLink() {
    const navigate = useNavigate()

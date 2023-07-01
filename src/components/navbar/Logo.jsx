@@ -1,6 +1,6 @@
 import React from 'react'
-import { Box, Typography } from '@mui/material'
 import { useNavigate } from 'react-router'
+import { Box, Typography } from '@mui/material'
 import icon from '../../assets/icon.png'
 
 function Logo() {
@@ -12,18 +12,25 @@ function Logo() {
             display: 'flex',
             justifyContent: { sx: 'left', sm: 'center' },
             alignItems: 'center',
-            gap: '10px',
+            gap: '7px',
             cursor: 'pointer',
          }}
       >
-         <img src={icon} alt="tu Casa logo" height="45px" width="45px" />
+         <img
+            src={icon}
+            alt="tu Casa logo"
+            style={{
+               height: { xs: '35px', lg: '45px' },
+               width: { xs: '35px', lg: '45px' },
+            }}
+         />
 
          <Typography
             variant="h4"
             sx={{
                fontWeight: 'bold',
                color: 'secondary.dark',
-               fontSize: { xs: '1.5rem', sm: '2rem' },
+               fontSize: { xs: '1.5rem', sm: '1.6rem' },
             }}
          >
             tu Casa

@@ -1,16 +1,10 @@
 import React, { useState } from 'react'
-import ListSubheader from '@mui/material/ListSubheader'
-import List from '@mui/material/List'
-import ListItemButton from '@mui/material/ListItemButton'
-import ListItemText from '@mui/material/ListItemText'
-import Collapse from '@mui/material/Collapse'
-import ExpandLess from '@mui/icons-material/ExpandLess'
-import ExpandMore from '@mui/icons-material/ExpandMore'
-import { Flag } from '@mui/icons-material'
-import { Box, ListItemIcon } from '@mui/material'
-import StatesData from './data.json'
-const StateList = StatesData.data
 import '../../styles/CustomScrollBar.css'
+import { Box, List, ListItemButton, ListItemText, ListItemIcon, Collapse } from '@mui/material'
+import { ExpandLess, ExpandMore, Flag } from '@mui/icons-material'
+import StatesData from './data.json'
+
+const StateList = StatesData.data
 
 function CityList() {
    const [States, setStatesData] = useState(StateList)
@@ -19,7 +13,7 @@ function CityList() {
          className="custom-scrollbar"
          sx={{
             position: 'fixed',
-            height: '900px',
+            height: '90vh',
             width: '30%',
             maxWidth: 300,
             overflowY: 'scroll',
