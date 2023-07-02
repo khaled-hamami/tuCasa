@@ -4,7 +4,7 @@ import styled from '@emotion/styled'
 
 //Switch Button
 
-const MaterialUISwitch = styled(Switch)(({ theme }) => ({
+const ThemeSwitcher = styled(Switch)(({ theme }) => ({
    width: 62,
    height: 34,
    padding: 7,
@@ -51,17 +51,8 @@ const MaterialUISwitch = styled(Switch)(({ theme }) => ({
    },
 }))
 
-//Themes
-
-
 function ThemeToogler({ display, theme, setTheme }) {
-   //handle switch theme
-
-   return (
-      <Box>
-         <MaterialUISwitch sx={{ display: { display } }} />
-      </Box>
-   )
+   return <ThemeSwitcher sx={{ display: { display } }} />
 }
 
 export default ThemeToogler

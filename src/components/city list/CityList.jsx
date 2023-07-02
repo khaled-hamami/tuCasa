@@ -8,6 +8,7 @@ const StateList = StatesData.data
 
 function CityList() {
    const [States, setStatesData] = useState(StateList)
+
    return (
       <List
          className="custom-scrollbar"
@@ -25,6 +26,7 @@ function CityList() {
          aria-labelledby="nested-list-subheader"
       >
          {StateList.map((State, index) => {
+            //maps all 24 states to a list
             return (
                //it took me a day :)
                <Box key={State.id}>
@@ -45,6 +47,7 @@ function CityList() {
                   </ListItemButton>
 
                   <Collapse in={States[index].open} timeout="auto" unmountOnExit>
+                     {/*  maps all sub states for each state "nested mapping" */}
                      {State.delegations.map((gouvernment) => {
                         return (
                            <List component="div" disablePadding key={gouvernment}>
