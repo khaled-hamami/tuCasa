@@ -3,11 +3,16 @@ import '../../styles/CustomScrollBar.css'
 import { Box, List, ListItemButton, ListItemText, ListItemIcon, Collapse } from '@mui/material'
 import { ExpandLess, ExpandMore, Flag } from '@mui/icons-material'
 import StatesData from './data.json'
+import { atom, useAtom } from 'jotai'
 
 const StateList = StatesData.data
 
+export const delegation = atom('default')
+
 function CityList() {
    const [States, setStatesData] = useState(StateList)
+   //on click set the selected gouvernement to this state
+   const [selectedDelegation, setSelectedDelegation] = useAtom(delegation)
 
    return (
       <List
@@ -48,14 +53,19 @@ function CityList() {
 
                   <Collapse in={States[index].open} timeout="auto" unmountOnExit>
                      {/*  maps all sub states for each state "nested mapping" */}
-                     {State.delegations.map((gouvernment) => {
+                     {State.delegations.map((delegation) => {
                         return (
-                           <List component="div" disablePadding key={gouvernment}>
+                           <List
+                              component="div"
+                              disablePadding
+                              key={delegation}
+                              onClick={() => setSelectedDelegation(() => delegation)}
+                           >
                               <ListItemButton sx={{ pl: 7 }}>
                                  <ListItemIcon>
                                     <Flag fontSize="sm" />
                                  </ListItemIcon>
-                                 <ListItemText primary={gouvernment} />
+                                 <ListItemText primary={delegation} />
                               </ListItemButton>
                            </List>
                         )

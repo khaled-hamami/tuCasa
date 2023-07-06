@@ -1,13 +1,20 @@
-import React from 'react'
-import { Box, Paper, Typography } from '@mui/material'
+import React, { useState } from 'react'
+import { Box, Paper, TextField, Typography } from '@mui/material'
 import RememberMe from './RememberMe'
 import LoginButton from '../navbar/LoginButton'
 import SignUpLink from './SignUpLink'
 import ForgotYourPassword from './ForgotYourPassword'
-import TextFieldPassword from './TextFieldPassword'
-import TextFieldEmail from './TextFieldEmail'
+
 
 function LoginForm() {
+   const [Password, SetPassword] = useState('')
+   const [PasswordLength, setPasswordLength] = useState(0)
+   
+   const handleChange = (e) => {
+      SetPassword(e.target.value)
+      setPasswordLength(e.target.value.length)
+   }
+   
    return (
       <Box
          sx={{
@@ -39,8 +46,32 @@ function LoginForm() {
                Se connecter
             </Typography>
 
-            <TextFieldEmail />
-            <TextFieldPassword />
+            <Box p="0  30px">
+               <TextField
+                  required
+                  name="email"
+                  color="info"
+                  id="email-form-input"
+                  label="email"
+                  variant="standard"
+                  type="email"
+                  fullWidth
+               />
+            </Box>
+            <Box p="0  30px">
+               <TextField
+                  onChange={handleChange}
+                  error={PasswordLength > 8 ? true : false}
+                  required
+                  name="password"
+                  color="info"
+                  id="password-form-input"
+                  label="mot de passe"
+                  variant="standard"
+                  type="password"
+                  fullWidth
+               />
+            </Box>
             <RememberMe />
             <LoginButton width="40%" content="Connexion" />
             <SignUpLink />

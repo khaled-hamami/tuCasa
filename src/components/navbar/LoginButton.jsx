@@ -1,10 +1,11 @@
 import React from 'react'
 import { Box, Button } from '@mui/material'
 
-function LoginButton({ width, content }) {
+function LoginButton({ width, content, type }) {
    return (
       <Box sx={{ display: 'flex', justifyContent: 'center' }}>
          <Button
+            type={type}
             variant="contained"
             sx={{
                width: { width },

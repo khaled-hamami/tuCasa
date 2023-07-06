@@ -2,11 +2,17 @@ import React, { useState } from 'react'
 import '../../styles/CustomScrollBar.css'
 import { Box, ListItemIcon, Collapse, List, ListItemButton, ListItemText } from '@mui/material'
 import StatesData from '../city list/data.json'
+import { delegation } from '../city list/CityList'
+import { ExpandLess, ExpandMore, Flag } from '@mui/icons-material'
+import { useAtom } from 'jotai'
 
 const StateList = StatesData.data
 
 function DrawerMenu({ display }) {
    const [States, setStatesData] = useState(StateList)
+
+   //set the selected
+   const [selectedDelegation, setSelectedDelegation] = useAtom(delegation)
    return (
       <List
          className="custom-scrollbar"
@@ -43,14 +49,19 @@ function DrawerMenu({ display }) {
                   </ListItemButton>
 
                   <Collapse in={States[index].open} timeout="auto" unmountOnExit>
-                     {State.delegations.map((gouvernment) => {
+                     {State.delegations.map((mobiledelegation) => {
                         return (
-                           <List component="div" disablePadding key={gouvernment}>
+                           <List
+                              component="div"
+                              disablePadding
+                              key={mobiledelegation}
+                              onClick={() => setSelectedDelegation(() => mobiledelegation)}
+                           >
                               <ListItemButton sx={{ pl: 7 }}>
                                  <ListItemIcon>
                                     <Flag fontSize="sm" />
                                  </ListItemIcon>
-                                 <ListItemText primary={gouvernment} />
+                                 <ListItemText primary={mobiledelegation} />
                               </ListItemButton>
                            </List>
                         )
