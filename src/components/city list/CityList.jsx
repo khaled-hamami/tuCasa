@@ -3,7 +3,7 @@ import '../../styles/CustomScrollBar.css'
 import { Box, List, ListItemButton, ListItemText, ListItemIcon, Collapse } from '@mui/material'
 import { ExpandLess, ExpandMore, Flag } from '@mui/icons-material'
 import { atom, useAtom } from 'jotai'
-import StatesData from './data.json'
+import StatesData from '../../assets/data.json'
 
 const StateList = StatesData.data
 
@@ -26,7 +26,7 @@ function CityList() {
             bgcolor: 'primary.light',
             color: 'secondary.main',
             display: { xs: 'none', md: 'block' },
-            zIndex:'1'
+            zIndex: '1',
          }}
          component="nav"
          aria-labelledby="nested-list-subheader"

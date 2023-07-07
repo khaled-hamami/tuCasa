@@ -1,16 +1,45 @@
-import React from 'react'
+import React, { useRef, useState } from 'react'
 import { Close, PostAdd } from '@mui/icons-material'
-import { Box, Button, ButtonGroup, TextField } from '@mui/material'
+import { Box, Button, ButtonGroup, TextField, Typography } from '@mui/material'
 import styled from '@emotion/styled'
 import { useForm } from 'react-hook-form'
 import * as yup from 'yup'
 import { yupResolver } from '@hookform/resolvers/yup'
+import DelegationList from './DelegationList'
 
 function PostForm({ setAddPostDisplay }) {
    /********************** YUP RULES SCHEMA  ***************************/
 
    const schema = yup.object({})
 
+   /********************** handle Image Upload  ***************************/
+
+   const fileInputRef = useRef(null)
+   const [uploadedImages, setUploadedImages] = useState([])
+
+   const handleImageUpload = (event) => {
+      const files = event.target.files
+      const imagesArray = []
+
+      for (let i = 0; i < files.length; i++) {
+         const file = files[i]
+         const reader = new FileReader()
+
+         reader.onload = () => {
+            const imageUrl = reader.result
+            imagesArray.push(imageUrl)
+
+            // Update the state with the new array of uploaded image URLs
+            setUploadedImages([...imagesArray])
+         }
+
+         reader.readAsDataURL(file)
+      }
+   }
+
+   const handleButtonClick = () => {
+      fileInputRef.current.click()
+   }
    /***********************    PASS THE USER INFO TO THE FETCH FUNCTION     *************/
 
    const form = useForm({
@@ -31,6 +60,11 @@ function PostForm({ setAddPostDisplay }) {
       },
    }))
 
+   /***********************   A STATE   *************/
+
+   //handle the state when the user selects a delegation
+   const [selectedItem, setSelectedItem] = useState(null)
+
    /***********************   THE COMPONENT   *************/
 
    return (
@@ -50,19 +84,14 @@ function PostForm({ setAddPostDisplay }) {
             gap="15px"
             sx={{ flexDirection: { xs: 'column', sm: 'row' } }}
          >
-            <TextField
-               id="filler"
-               name="filler"
-               color="info"
-               fullWidth
-               label="Preciser Votre Location"
-            />
+            <DelegationList setSelectedItem={setSelectedItem} />
             <TextField
                id="preciseLocation"
                name="preciseLocation"
                fullWidth
                color="info"
                label="Preciser Votre Location"
+               multiline
             />
          </Box>
          <TextField
@@ -71,6 +100,7 @@ function PostForm({ setAddPostDisplay }) {
             fullWidth
             color="info"
             label="Description"
+            multiline
          />
 
          <Box
@@ -87,7 +117,20 @@ function PostForm({ setAddPostDisplay }) {
                color="info"
             />
          </Box>
-         <Button variant="ou">Ajouter des images</Button>
+         <>
+            <input
+               type="file"
+               accept="image/*"
+               onChange={handleImageUpload}
+               style={{ display: 'none' }}
+               ref={fileInputRef}
+               multiple
+            />
+            <Button variant="contained" color="primary" onClick={handleButtonClick}>
+               Importer des images
+            </Button>
+            <Typography>images téléchargées : {uploadedImages.length}</Typography>
+         </>
 
          <ButtonGroup fullWidth sx={{ gap: { xs: '20px', md: '50px' } }}>
             <CustomButton onClick={() => setAddPostDisplay(false)} variant="contained" size="small">
