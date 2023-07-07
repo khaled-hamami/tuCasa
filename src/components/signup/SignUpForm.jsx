@@ -4,7 +4,7 @@ import * as yup from 'yup'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { Box, Paper, TextField, Typography } from '@mui/material'
 import LoginButton from '../navbar/LoginButton'
-import createUser from '../apis/createUser'
+import createUser from '../../apis/createUser'
 
 function SignUpForm() {
    /********************** YUP RULES SCHEMA  ***************************/

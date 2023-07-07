@@ -23,6 +23,7 @@ function MobileDrawer() {
             position: 'fixed',
             width: '100%',
             backgroundColor: 'primary.dark',
+            padding:'2px 0px'
          }}
       >
          <Box sx={{ display: 'flex', justifyContent: 'space-between', width: '100%' }}>

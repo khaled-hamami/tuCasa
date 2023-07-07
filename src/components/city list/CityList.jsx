@@ -2,12 +2,12 @@ import React, { useState } from 'react'
 import '../../styles/CustomScrollBar.css'
 import { Box, List, ListItemButton, ListItemText, ListItemIcon, Collapse } from '@mui/material'
 import { ExpandLess, ExpandMore, Flag } from '@mui/icons-material'
-import StatesData from './data.json'
 import { atom, useAtom } from 'jotai'
+import StatesData from './data.json'
 
 const StateList = StatesData.data
 
-export const delegation = atom('default')
+export const delegation = atom('Tunisie')
 
 function CityList() {
    const [States, setStatesData] = useState(StateList)
@@ -26,6 +26,7 @@ function CityList() {
             bgcolor: 'primary.light',
             color: 'secondary.main',
             display: { xs: 'none', md: 'block' },
+            zIndex:'1'
          }}
          component="nav"
          aria-labelledby="nested-list-subheader"
