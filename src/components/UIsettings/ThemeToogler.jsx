@@ -1,5 +1,5 @@
 import React from 'react'
-import { Box, Switch } from '@mui/material'
+import { Switch } from '@mui/material'
 import styled from '@emotion/styled'
 
 //Switch Button

@@ -2,8 +2,8 @@ import React, { useState } from 'react'
 import StatesData from '../../assets/data.json'
 import { Autocomplete, Paper, TextField } from '@mui/material'
 
-function DelegationList({ setSelectedItem }) {
-   //tmaking the required object for the autocomlete
+function DelegationList({ setSelectedItem, name, registrer, error, helperText }) {
+   //making the required object for the autocomlete
 
    const statesList = []
    const delegationSet = new Set()
@@ -30,7 +30,16 @@ function DelegationList({ setSelectedItem }) {
          options={delegationList}
          sx={{ width: 300 }}
          onChange={handleSelection}
-         renderInput={(params) => <TextField {...params} label="Delegation" />}
+         renderInput={(params) => (
+            <TextField
+               name={name}
+               {...registrer}
+               {...params}
+               error={error}
+               helperText={helperText}
+               label="Delegation"
+            />
+         )}
          PaperComponent={(props) => (
             <Paper
                elevation={8} // Controls the shadow depth

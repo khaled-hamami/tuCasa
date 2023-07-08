@@ -1,7 +1,8 @@
-import './styles/App.css'
-import { BrowserRouter as Router } from 'react-router-dom'
 import { useEffect, useState } from 'react'
+import { BrowserRouter as Router } from 'react-router-dom'
 import { Routes, Route } from 'react-router'
+import { Box, ThemeProvider, createTheme } from '@mui/material'
+import './styles/App.css'
 import Navbar from './components/navbar/Navbar'
 import Home from './pages/Home'
 import Rentals from './pages/Rentals'
@@ -9,8 +10,9 @@ import Login from './pages/Login'
 import Signup from './pages/Signup'
 import About from './pages/About'
 import Error from './pages/Error'
-import { Box, ThemeProvider, createTheme } from '@mui/material'
 import ThemeToogler from './components/UIsettings/ThemeToogler'
+
+/*********************************************   THEMES    ***************************************** */
 
 export const lightTheme = createTheme({
    palette: {
@@ -46,9 +48,12 @@ export const darkTheme = createTheme({
    },
 })
 
+/*********************************************   APP COMPONENT    ***************************************** */
+
 function App() {
    const [theme, setTheme] = useState(lightTheme)
 
+   //set the background color for the whole project using theme  (its dynamic background color  thats why css wasnt used)
    document.body.style.backgroundColor = theme.palette.primary.main
 
    //set the theme as well as store it in localp storage
@@ -72,6 +77,7 @@ function App() {
       }
    }, [])
 
+   //the component
    return (
       <Box sx={{ height: '100%', backgroundColor: theme.palette.primary.main }}>
          <ThemeProvider theme={theme}>

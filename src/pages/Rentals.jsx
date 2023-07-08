@@ -50,6 +50,10 @@ function Rentals() {
             </Typography>
 
             <MinimizedPost id="" location="el fahs" price="400" images={['img1', 'img2', 'img3','img4']} />
+            <MinimizedPost id="" location="el fahs" price="400" images={['img1', 'img2', 'img3','img4']} />
+            <MinimizedPost id="" location="el fahs" price="400" images={['img1', 'img2', 'img3','img4']} />
+            <MinimizedPost id="" location="el fahs" price="400" images={['img1', 'img2', 'img3','img4']} />
+            <MinimizedPost id="" location="el fahs" price="400" images={['img1', 'img2', 'img3','img4']} />
          </Box>
       </Box>
    )

@@ -1,5 +1,5 @@
 const createUser = async (firstName, lastName, email, password) => {
-   const URL = import.meta.env.VITE_API_KEY
+   const URL = import.meta.env.VITE_SIGNUP_KEY
 
    try {
       const respone = await fetch(URL, {

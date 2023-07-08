@@ -6,12 +6,9 @@ import { useForm } from 'react-hook-form'
 import * as yup from 'yup'
 import { yupResolver } from '@hookform/resolvers/yup'
 import DelegationList from './DelegationList'
+import createPost from '../../apis/createPost'
 
 function PostForm({ setAddPostDisplay }) {
-   /********************** YUP RULES SCHEMA  ***************************/
-
-   const schema = yup.object({})
-
    /********************** handle Image Upload  ***************************/
 
    const fileInputRef = useRef(null)
@@ -19,7 +16,7 @@ function PostForm({ setAddPostDisplay }) {
 
    const handleImageUpload = (event) => {
       const files = event.target.files
-      const imagesArray = []
+      const uploadedImages = []
 
       for (let i = 0; i < files.length; i++) {
          const file = files[i]
@@ -27,10 +24,10 @@ function PostForm({ setAddPostDisplay }) {
 
          reader.onload = () => {
             const imageUrl = reader.result
-            imagesArray.push(imageUrl)
+            uploadedImages.push(imageUrl)
 
             // Update the state with the new array of uploaded image URLs
-            setUploadedImages([...imagesArray])
+            setUploadedImages([...uploadedImages])
          }
 
          reader.readAsDataURL(file)
@@ -40,7 +37,45 @@ function PostForm({ setAddPostDisplay }) {
    const handleButtonClick = () => {
       fileInputRef.current.click()
    }
-   /***********************    PASS THE USER INFO TO THE FETCH FUNCTION     *************/
+
+   /********************** YUP RULES SCHEMA  ***************************/
+
+   const schema = yup.object({
+      delegation: yup
+         .string('la Delegation ne doit contenir que des caractères')
+         .max(100, 'La Delegation ne doit pas dépasser 100 caractères')
+         .min(3, 'La Delegation doit contenir au moins 3 caractères')
+         .required('La Delegation est requis')
+         .matches(/^[a-zA-Z0-9 ]+$/, 'Le nom ne doit contenir que des lettres et des chiffres'),
+
+      preciseLocation: yup
+         .string('le description ne doit contenir que des caractères')
+         .max(50, 'Le description ne doit pas dépasser 50 caractères')
+         .min(3, 'Le description doit contenir au moins 3 caractères')
+         .matches(/^[a-zA-Z0-9,+ ]+$/, 'Le nom ne doit contenir que des lettres et des chiffres')
+         .required('Le location precis est requis'),
+
+      description: yup
+         .string('le description ne doit contenir que des caractères')
+         .max(500, 'Le description ne doit pas dépasser 500 caractères')
+         .min(10, 'Le description doit contenir au moins 10 caractères')
+         .matches(/^[a-zA-Z0-9,+ \n]+$/, 'Le nom ne doit contenir que des lettres et des chiffres')
+         .required('Le description est requis'),
+
+      price: yup
+         .number('le prix ne doit contenir que des chiffres')
+         .positive('Le prix des chambres doit etre un chiffre positive')
+         .max(10000000, 'le prix  ne doit pas dépasser 10000000')
+         .min(50, 'le prix doit etre plus que 50'),
+
+      roomsNumber: yup
+         .number('le nombre des chambres ne doit contenir que des chiffres')
+         .max(10, 'Le nombre des chambres ne doit pas dépasser 10  chambre')
+         .positive('Le nombre des chambres doit etre un chiffre positive')
+         .required('Le nombre des chambres est requis'),
+   })
+
+   /***********************    YUP INTEGRATION WITH REACT-HOOK-FORM       ***************/
 
    const form = useForm({
       resolver: yupResolver(schema),
@@ -48,6 +83,21 @@ function PostForm({ setAddPostDisplay }) {
 
    const { register, handleSubmit, formState } = form
    const { errors } = formState
+
+   /***********************    PASS THE USER INFO TO THE FETCH FUNCTION     *************/
+
+   const submit = (data) => {
+      if (uploadedImages.length) {
+         createPost(
+            data.delegation,
+            data.preciseLocation,
+            data.description,
+            data.price,
+            data.roomsNumber,
+            uploadedImages
+         )
+      } else alert('please provide one image or more')
+   }
 
    /********************** CUSTOM MUi BUTTON  ***************************/
 
@@ -60,7 +110,7 @@ function PostForm({ setAddPostDisplay }) {
       },
    }))
 
-   /***********************   A STATE   *************/
+   /***********************   A STATES   *************/
 
    //handle the state when the user selects a delegation
    const [selectedItem, setSelectedItem] = useState(null)
@@ -69,6 +119,7 @@ function PostForm({ setAddPostDisplay }) {
 
    return (
       <form
+         onSubmit={handleSubmit(submit)}
          style={{
             width: '80%',
             height: '100%',
@@ -84,7 +135,13 @@ function PostForm({ setAddPostDisplay }) {
             gap="15px"
             sx={{ flexDirection: { xs: 'column', sm: 'row' } }}
          >
-            <DelegationList setSelectedItem={setSelectedItem} />
+            <DelegationList
+               setSelectedItem={setSelectedItem}
+               name={'delegation'}
+               registrer={{ ...register('delegation') }}
+               error={errors.delegation ? true : false}
+               helperText={errors.delegation?.message}
+            />
             <TextField
                id="preciseLocation"
                name="preciseLocation"
@@ -92,6 +149,9 @@ function PostForm({ setAddPostDisplay }) {
                color="info"
                label="Preciser Votre Location"
                multiline
+               {...register('preciseLocation')}
+               error={errors.preciseLocation ? true : false}
+               helperText={errors.preciseLocation?.message}
             />
          </Box>
          <TextField
@@ -101,6 +161,9 @@ function PostForm({ setAddPostDisplay }) {
             color="info"
             label="Description"
             multiline
+            {...register('description')}
+            error={errors.description ? true : false}
+            helperText={errors.description?.message}
          />
 
          <Box
@@ -109,12 +172,23 @@ function PostForm({ setAddPostDisplay }) {
             alignItems="center"
             sx={{ flexDirection: { xs: 'column', sm: 'row' }, gap: { xs: '30px', sm: '80px' } }}
          >
-            <TextField id="price" name="price" label="Prix" color="info" />
+            <TextField
+               id="price"
+               name="price"
+               label="Prix"
+               color="info"
+               {...register('price')}
+               error={errors.price ? true : false}
+               helperText={errors.price?.message}
+            />
             <TextField
                id="roomsNumber"
                name="roomsNumber"
                label=" Nombre des chambres"
                color="info"
+               {...register('roomsNumber')}
+               error={errors.roomsNumber ? true : false}
+               helperText={errors.roomsNumber?.message}
             />
          </Box>
          <>

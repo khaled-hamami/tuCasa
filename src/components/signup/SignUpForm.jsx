@@ -11,17 +11,19 @@ function SignUpForm() {
 
    const schema = yup.object({
       firstName: yup
-         .string('le prenom ne doit contenir que des caractères')
+         .string('le prénom ne doit contenir que des caractères')
          .min(2, 'Le prénom doit contenir au moins 2 caractères')
          .matches(/^[a-zA-Z0-9]+$/, 'Le nom ne doit contenir que des lettres et des chiffres')
          .max(20, 'Le prénom ne doit pas dépasser 20 caractères')
-         .required('Le prenom est requis'),
+         .required('Le prénom est requis'),
+
       lastName: yup
          .string('le nom ne doit contenir que des caractères')
          .min(2, 'Le nom doit contenir au moins 2 caractères')
          .matches(/^[a-zA-Z0-9]+$/, 'Le nom ne doit contenir que des lettres et des chiffres')
          .max(20, 'Le nom ne doit pas dépasser 20 caractères')
          .required('Le nom est requis'),
+
       email: yup
          .string("l'email  ne doit contenir que des caractères")
          .email('Adresse e-mail invalide')
@@ -32,6 +34,7 @@ function SignUpForm() {
          )
          .email('Adresse e-mail invalide')
          .required("L'adresse e-mail est requise"),
+
       password: yup
          .string('le mot de passe ne doit contenir que des caractères')
          .min(6, 'Le mot de passe doit contenir au moins 6 caractères')
