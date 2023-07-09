@@ -18,7 +18,7 @@ function Rentals() {
    return (
       <Box sx={{ display: 'flex', height: '100%', width: '100%', backgroundColor: 'primary.main' }}>
          <AddPost display={addPostDisplay} setAddPostDisplay={setAddPostDisplay} />
-         <MobileDrawer />
+         <MobileDrawer setAddPostDisplay={setAddPostDisplay} />
          <CityList />
          <Box
             display="flex"
@@ -30,7 +30,7 @@ function Rentals() {
             <Typography
                variant="h5"
                sx={{
-                  display: 'flex',
+                  display: { xs: 'none', md: 'flex' },
                   alignItems: 'center',
                   letterSpacing: '-1.2px',
                   color: 'secondary.light',
@@ -49,11 +49,36 @@ function Rentals() {
                <AddButton setAddPostDisplay={setAddPostDisplay} />
             </Typography>
 
-            <MinimizedPost id="" location="el fahs" price="400" images={['img1', 'img2', 'img3','img4']} />
-            <MinimizedPost id="" location="el fahs" price="400" images={['img1', 'img2', 'img3','img4']} />
-            <MinimizedPost id="" location="el fahs" price="400" images={['img1', 'img2', 'img3','img4']} />
-            <MinimizedPost id="" location="el fahs" price="400" images={['img1', 'img2', 'img3','img4']} />
-            <MinimizedPost id="" location="el fahs" price="400" images={['img1', 'img2', 'img3','img4']} />
+            <MinimizedPost
+               id=""
+               location="el fahs"
+               price="400"
+               images={['img1', 'img2', 'img3', 'img4']}
+            />
+            <MinimizedPost
+               id=""
+               location="el fahs"
+               price="400"
+               images={['img1', 'img2', 'img3', 'img4']}
+            />
+            <MinimizedPost
+               id=""
+               location="el fahs"
+               price="400"
+               images={['img1', 'img2', 'img3', 'img4']}
+            />
+            <MinimizedPost
+               id=""
+               location="el fahs"
+               price="400"
+               images={['img1', 'img2', 'img3', 'img4']}
+            />
+            <MinimizedPost
+               id=""
+               location="el fahs"
+               price="400"
+               images={['img1', 'img2', 'img3', 'img4']}
+            />
          </Box>
       </Box>
    )

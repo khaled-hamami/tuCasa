@@ -16,7 +16,7 @@ const CustomMuiButton = styled(Button)(({ theme }) => ({
 function CustomButton() {
    return (
       <CustomMuiButton variant="contained" size="large">
-         Expand
+         Agrandir
       </CustomMuiButton>
    )
 }

@@ -203,7 +203,7 @@ function PostForm({ setAddPostDisplay }) {
             <Button variant="contained" color="primary" onClick={handleButtonClick}>
                Importer des images
             </Button>
-            <Typography>images téléchargées : {uploadedImages.length}</Typography>
+            <Typography>Images importées : {uploadedImages.length}</Typography>
          </>
 
          <ButtonGroup fullWidth sx={{ gap: { xs: '20px', md: '50px' } }}>

@@ -34,9 +34,10 @@ const createPost = async (
       alert('post created successfully')
       window.location.reload()
    } catch (err) {
+      console.log(uploadedImages)
       console.log(err)
       alert(err)
-      location.reload()
+      // location.reload()
    }
 }
 
