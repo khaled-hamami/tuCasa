@@ -4,8 +4,13 @@ const createPost = async (
    description,
    price,
    roomsNumber,
-   uploadedImages
+   uploadedImages,
+   setFetching
 ) => {
+   //a state to disable the submit button to prevent multiple requests
+   setFetching(true)
+
+   //the url where the signup request goes to
    const URL = import.meta.env.VITE_CREATE_POST_KEY
 
    try {
@@ -34,11 +39,11 @@ const createPost = async (
       alert('post created successfully')
       window.location.reload()
    } catch (err) {
-      console.log(uploadedImages)
-      console.log(err)
-      alert(err)
+      console.log(err.message)
+      alert('erreur de connexion du serveur')
       // location.reload()
    }
+   setFetching(false)
 }
 
 export default createPost

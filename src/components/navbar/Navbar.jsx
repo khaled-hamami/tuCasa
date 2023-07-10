@@ -4,8 +4,10 @@ import Logo from './Logo'
 import Links from './Links'
 import LoginButton from './LoginButton'
 import Search from './Search'
+import { useNavigate } from 'react-router'
 
 function Navbar({ toogleButton }) {
+   const navigate = useNavigate()
    return (
       <Box position="sticky" top="0" zIndex="1" border="solid rgba(0,0,0,.2) 1px">
          <Box
@@ -31,7 +33,7 @@ function Navbar({ toogleButton }) {
             <Box flex="3" sx={{ display: { xs: 'none', sm: 'block' } }}>
                <Search />
             </Box>
-            <Box flex="1">
+            <Box flex="1" onClick={() => navigate('/login')}>
                <LoginButton content="connexion" />
             </Box>
             <Box flex=".5">{toogleButton}</Box>

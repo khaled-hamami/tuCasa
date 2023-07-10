@@ -1,10 +1,12 @@
 import React from 'react'
 import { Box, Button } from '@mui/material'
+import { useNavigate } from 'react-router'
 
-function LoginButton({ width, content, type }) {
+function LoginButton({ width, content, type, disabled }) {
    return (
       <Box sx={{ display: 'flex', justifyContent: 'center' }}>
          <Button
+            disabled={disabled}
             type={type}
             variant="contained"
             sx={{

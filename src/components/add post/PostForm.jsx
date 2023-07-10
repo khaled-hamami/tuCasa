@@ -43,36 +43,38 @@ function PostForm({ setAddPostDisplay }) {
    const schema = yup.object({
       delegation: yup
          .string('la Delegation ne doit contenir que des caractères')
+         .required('La Delegation est requis')
          .max(100, 'La Delegation ne doit pas dépasser 100 caractères')
          .min(3, 'La Delegation doit contenir au moins 3 caractères')
-         .required('La Delegation est requis')
          .matches(/^[a-zA-Z0-9 ]+$/, 'Le nom ne doit contenir que des lettres et des chiffres'),
 
       preciseLocation: yup
          .string('le description ne doit contenir que des caractères')
+         .required('Le location precis est requis')
          .max(50, 'Le description ne doit pas dépasser 50 caractères')
          .min(3, 'Le description doit contenir au moins 3 caractères')
-         .matches(/^[a-zA-Z0-9,+ ]+$/, 'Le nom ne doit contenir que des lettres et des chiffres')
-         .required('Le location precis est requis'),
+         .matches(/^[a-zA-Z0-9,+\n ]+$/, 'Le nom ne doit contenir que des lettres et des chiffres'),
 
       description: yup
          .string('le description ne doit contenir que des caractères')
+         .required('Le description est requis')
          .max(500, 'Le description ne doit pas dépasser 500 caractères')
          .min(10, 'Le description doit contenir au moins 10 caractères')
-         .matches(/^[a-zA-Z0-9,+ \n]+$/, 'Le nom ne doit contenir que des lettres et des chiffres')
-         .required('Le description est requis'),
+         .matches(/^[a-zA-Z0-9,+\n ]+$/, 'Le nom ne doit contenir que des lettres et des chiffres'),
 
       price: yup
          .number('le prix ne doit contenir que des chiffres')
+         .min(50, 'le prix doit etre plus que 50')
+         .required('Le location precis est requis')
          .positive('Le prix des chambres doit etre un chiffre positive')
-         .max(10000000, 'le prix  ne doit pas dépasser 10000000')
-         .min(50, 'le prix doit etre plus que 50'),
+         .max(10000000, 'le prix  ne doit pas dépasser 10000000'),
 
       roomsNumber: yup
          .number('le nombre des chambres ne doit contenir que des chiffres')
+         .integer('le nombre des chambres doit etre un nombre réel')
+         .required('Le nombre des chambres est requis')
          .max(10, 'Le nombre des chambres ne doit pas dépasser 10  chambre')
-         .positive('Le nombre des chambres doit etre un chiffre positive')
-         .required('Le nombre des chambres est requis'),
+         .min(0, 'le nombre des chambres no doit etre un nombre négatif'),
    })
 
    /***********************    YUP INTEGRATION WITH REACT-HOOK-FORM       ***************/
@@ -85,6 +87,8 @@ function PostForm({ setAddPostDisplay }) {
    const { errors } = formState
 
    /***********************    PASS THE USER INFO TO THE FETCH FUNCTION     *************/
+   // a state to disable the submit button to prevent the user to sens multiple requests
+   const [fetching, setFetching] = useState(false)
 
    const submit = (data) => {
       if (uploadedImages.length) {
@@ -94,7 +98,8 @@ function PostForm({ setAddPostDisplay }) {
             data.description,
             data.price,
             data.roomsNumber,
-            uploadedImages
+            uploadedImages,
+            setFetching
          )
       } else alert('please provide one image or more')
    }
@@ -207,12 +212,17 @@ function PostForm({ setAddPostDisplay }) {
          </>
 
          <ButtonGroup fullWidth sx={{ gap: { xs: '20px', md: '50px' } }}>
-            <CustomButton onClick={() => setAddPostDisplay(false)} variant="contained" size="small">
-               Annuler &nbsp;
+            <CustomButton
+               onClick={() => setAddPostDisplay(false)}
+               variant="contained"
+               size="small"
+               disabled={fetching}
+            >
+               Annuler&nbsp;
                <Close />
             </CustomButton>
-            <CustomButton size="small" variant="contained" type="submit">
-               Confirmer &nbsp;
+            <CustomButton size="small" variant="contained" type="submit" disabled={fetching}>
+               Confirmer&nbsp;
                <PostAdd />
             </CustomButton>
          </ButtonGroup>
