@@ -1,8 +1,9 @@
 import React from 'react'
 import { Box, Paper, Typography } from '@mui/material'
 import CustomButton from './CustomButton'
+import EditButton from './editButton'
 
-function MinimizedPost({ id, images, location, price }) {
+function MinimizedPost({ id, images, location, price, edit }) {
    return (
       <Box
          sx={{
@@ -54,7 +55,9 @@ function MinimizedPost({ id, images, location, price }) {
                   <Typography variant="h6">{location}</Typography>
                   <Typography variant="h6">{price}</Typography>
                </Box>
+
                <CustomButton />
+               {edit && <EditButton />}
             </Box>
          </Paper>
       </Box>

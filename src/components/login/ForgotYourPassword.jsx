@@ -7,9 +7,7 @@ function ForgotYourPassword() {
          <Typography
             color="secondary.main"
             ml="28px"
-            onClick={() =>
-               alert('ehhhh... :(  it happens sometimes ,  chill and try to remember it')
-            }
+            onClick={() => alert('Apologies , this is feature still in developement')}
             sx={{
                color: 'info.main',
                textDecoration: 'underline',

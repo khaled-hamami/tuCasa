@@ -26,22 +26,22 @@ const createPost = async (
             price,
             roomsNumber,
             uploadedImages,
+            //to send the user id  created the post
+            userId: localStorage.getItem('userId'),
          }),
       })
 
-      if (!respone.ok) throw new Error('could not create post! ')
+      if (!respone.ok) throw new Error('Impossible de créer la publication.! ')
 
       const data = await respone.json()
-
-      if (!data) throw new Error()
-
+      location.reload()
+      alert('Publication créée avec succès')
+      console.log(respone)
       console.log(data)
-      alert('post created successfully')
-      window.location.reload()
    } catch (err) {
+      location.reload()
+      alert(err.message)
       console.log(err.message)
-      alert('erreur de connexion du serveur')
-      // location.reload()
    }
    setFetching(false)
 }

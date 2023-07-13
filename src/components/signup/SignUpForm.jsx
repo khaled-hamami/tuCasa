@@ -1,56 +1,15 @@
 import React, { useState } from 'react'
 import { useForm } from 'react-hook-form'
-import * as yup from 'yup'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { Box, Paper, TextField, Typography } from '@mui/material'
+import schema from './schema'
 import LoginButton from '../navbar/LoginButton'
 import createUser from '../../apis/createUser'
 
 function SignUpForm() {
-   /********************** YUP RULES SCHEMA  ***************************/
-
-   const schema = yup.object({
-      firstName: yup
-         .string('le prénom ne doit contenir que des caractères')
-         .required('Le prénom est requis')
-         .matches(/^[a-zA-Z]+$/, 'Le prénom ne doit contenir que des lettres ')
-         .min(2, 'Le prénom doit contenir au moins 2 caractères')
-         .max(20, 'Le prénom ne doit pas dépasser 20 caractères'),
-
-      lastName: yup
-         .string('le nom ne doit contenir que des caractères')
-         .required('Le nom est requis')
-         .matches(/^[a-zA-Z]+$/, 'Le nom ne doit contenir que des lettres ')
-         .min(2, 'Le nom doit contenir au moins 2 caractères')
-         .max(20, 'Le nom ne doit pas dépasser 20 caractères'),
-
-      email: yup
-         .string("l'email  ne doit contenir que des caractères")
-         .required("L'adresse e-mail est requise")
-         .email('Adresse e-mail invalide')
-         .max(30, 'Le mot de passe doit contenir au max 30 caractères')
-         .matches(
-            /^[a-zA-Z0-9.@]+$/,
-            "L'email ne doit contenir que des lettres, des chiffres, des points, et un arobase"
-         )
-         .email('Adresse e-mail invalide'),
-
-      password: yup
-         .string('le mot de passe ne doit contenir que des caractères')
-         .required('Le mot de passe est requis')
-         .min(6, 'Le mot de passe doit contenir au moins 6 caractères')
-         .max(30, 'Le mot de passe doit contenir au max 30 caractères')
-         .matches(
-            /^[a-zA-Z0-9!#+*-_]+$/,
-            'Le mot de passe ne doit contenir que des lettres, des chiffres, !, #, +, *, et -'
-         ),
-   })
-
    /***********************    YUP INTEGRATION WITH REACT-HOOK-FORM       ***************/
 
-   const form = useForm({
-      resolver: yupResolver(schema),
-   })
+   const form = useForm({ resolver: yupResolver(schema) })
    const { register, handleSubmit, formState } = form
    const { errors } = formState
 

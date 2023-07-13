@@ -12,7 +12,6 @@ const CustomNavLink = styled(NavLink)(({ theme }) => ({
    display: 'inline-block',
    overflow: 'hidden',
 
-
    '&::after': {
       content: '""',
       position: 'absolute',
@@ -43,10 +42,10 @@ function Links() {
             Locations
          </CustomNavLink>
          <CustomNavLink to="/login" style={location.pathname === '/login' ? active : null}>
-            Se connecter
+            connecter
          </CustomNavLink>
-         <CustomNavLink to="/about" style={location.pathname === '/about' ? active : null}>
-            à Propos
+         <CustomNavLink to="/profile" style={location.pathname === '/profile' ? active : null}>
+            Profile
          </CustomNavLink>
       </Stack>
    )

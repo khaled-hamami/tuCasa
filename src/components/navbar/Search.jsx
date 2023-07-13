@@ -14,6 +14,7 @@ function Search() {
          }}
       >
          <InputBase
+            name="searchField"
             placeholder=" search..."
             fullWidth
             sx={{
@@ -21,7 +22,7 @@ function Search() {
                backgroundColor: 'secondary.light',
                color: 'primary.dark',
                p: '0px 5px',
-               borderRadius: '5px'
+               borderRadius: '5px',
             }}
          ></InputBase>
       </Box>

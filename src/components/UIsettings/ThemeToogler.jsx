@@ -52,7 +52,7 @@ const ThemeSwitcher = styled(Switch)(({ theme }) => ({
 }))
 
 function ThemeToogler({ display, theme, setTheme }) {
-   return <ThemeSwitcher sx={{ display: { display } }} />
+   return <ThemeSwitcher name="themeSwitcher" sx={{ display: { display } }} />
 }
 
 export default ThemeToogler

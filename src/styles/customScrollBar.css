@@ -9,11 +9,11 @@
 }
 
 .custom-scrollbar::-webkit-scrollbar-track {
-  background-color: #ffffff; /* Color of the track */
+   background-color: #ffffff; /* Color of the track */
 }
 
 .custom-scrollbar::-webkit-scrollbar-thumb {
-  border-radius: 8px;
+   border-radius: 8px;
    background-color: #646464; /* Color of the thumb */
 }
 

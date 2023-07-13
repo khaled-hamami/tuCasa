@@ -1,9 +1,13 @@
 import React from 'react'
-import { Box } from '@mui/material'
+import { Box, Typography } from '@mui/material'
 
 function Error() {
    return (
-      <Box sx={{ height: '100%', width: '100%', backgroundColor: 'primary.main' }}>Error Page</Box>
+      <Box bgcolor="primary.main">
+         <Typography variant="h4" p="20px" color="secondary.main" fontWeight='bolder'>
+            Page Non Trouvées
+         </Typography>
+      </Box>
    )
 }
 

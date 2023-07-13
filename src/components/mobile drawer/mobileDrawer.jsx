@@ -10,16 +10,8 @@ import AddButton from '../add post/AddButton'
 
 function MobileDrawer({ setAddPostDisplay }) {
    const [selectedDelegation] = useAtom(delegation)
-
+   //the menu of states and delegations
    const [isMenuOpen, setMenuOpen] = useState(false)
-
-   const openMenu = () => {
-      setMenuOpen(true)
-   }
-
-   const closeMenu = () => {
-      setMenuOpen(false)
-   }
 
    return (
       <Box
@@ -33,7 +25,7 @@ function MobileDrawer({ setAddPostDisplay }) {
          }}
       >
          <Box sx={{ display: 'flex', justifyContent: 'space-between', width: '100%' }}>
-            <IconButton onClick={openMenu}>
+            <IconButton onClick={() => setMenuOpen((prev) => !prev)}>
                <MenuIcon />
             </IconButton>
             <Typography
@@ -55,11 +47,14 @@ function MobileDrawer({ setAddPostDisplay }) {
             <Box
                sx={{
                   fontSize: { xs: '1rem', sm: '1.3rem', md: '1.5rem' },
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
                }}
             >
                <AddButton setAddPostDisplay={setAddPostDisplay} />
             </Box>
-            <IconButton onClick={closeMenu}>{isMenuOpen && <Clear  />}</IconButton>
+            <IconButton onClick={() => setMenuOpen(false)}>{isMenuOpen && <Clear />}</IconButton>
          </Box>
          {isMenuOpen && <DrawerMenu />}
       </Box>

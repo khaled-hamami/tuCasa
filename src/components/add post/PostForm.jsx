@@ -1,10 +1,10 @@
 import React, { useRef, useState } from 'react'
+import { useForm } from 'react-hook-form'
+import { yupResolver } from '@hookform/resolvers/yup'
 import { Close, PostAdd } from '@mui/icons-material'
 import { Box, Button, ButtonGroup, TextField, Typography } from '@mui/material'
 import styled from '@emotion/styled'
-import { useForm } from 'react-hook-form'
-import * as yup from 'yup'
-import { yupResolver } from '@hookform/resolvers/yup'
+import schema from './schema'
 import DelegationList from './DelegationList'
 import createPost from '../../apis/createPost'
 
@@ -38,50 +38,9 @@ function PostForm({ setAddPostDisplay }) {
       fileInputRef.current.click()
    }
 
-   /********************** YUP RULES SCHEMA  ***************************/
-
-   const schema = yup.object({
-      delegation: yup
-         .string('la Delegation ne doit contenir que des caractères')
-         .required('La Delegation est requis')
-         .max(100, 'La Delegation ne doit pas dépasser 100 caractères')
-         .min(3, 'La Delegation doit contenir au moins 3 caractères')
-         .matches(/^[a-zA-Z0-9 ]+$/, 'Le nom ne doit contenir que des lettres et des chiffres'),
-
-      preciseLocation: yup
-         .string('le description ne doit contenir que des caractères')
-         .required('Le location precis est requis')
-         .max(50, 'Le description ne doit pas dépasser 50 caractères')
-         .min(3, 'Le description doit contenir au moins 3 caractères')
-         .matches(/^[a-zA-Z0-9,+\n ]+$/, 'Le nom ne doit contenir que des lettres et des chiffres'),
-
-      description: yup
-         .string('le description ne doit contenir que des caractères')
-         .required('Le description est requis')
-         .max(500, 'Le description ne doit pas dépasser 500 caractères')
-         .min(10, 'Le description doit contenir au moins 10 caractères')
-         .matches(/^[a-zA-Z0-9,+\n ]+$/, 'Le nom ne doit contenir que des lettres et des chiffres'),
-
-      price: yup
-         .number('le prix ne doit contenir que des chiffres')
-         .min(50, 'le prix doit etre plus que 50')
-         .required('Le location precis est requis')
-         .positive('Le prix des chambres doit etre un chiffre positive')
-         .max(10000000, 'le prix  ne doit pas dépasser 10000000'),
-
-      roomsNumber: yup
-         .number('le nombre des chambres ne doit contenir que des chiffres')
-         .integer('le nombre des chambres doit etre un nombre réel')
-         .required('Le nombre des chambres est requis')
-         .max(10, 'Le nombre des chambres ne doit pas dépasser 10  chambre')
-         .min(0, 'le nombre des chambres no doit etre un nombre négatif'),
-   })
-
    /***********************    YUP INTEGRATION WITH REACT-HOOK-FORM       ***************/
 
-   const form = useForm({
-      resolver: yupResolver(schema),
-   })
+   const form = useForm({ resolver: yupResolver(schema) })
 
    const { register, handleSubmit, formState } = form
    const { errors } = formState
@@ -199,7 +158,7 @@ function PostForm({ setAddPostDisplay }) {
          <>
             <input
                type="file"
-               accept="image/*"
+               accept=".png , .jpg , .jpeg"
                onChange={handleImageUpload}
                style={{ display: 'none' }}
                ref={fileInputRef}

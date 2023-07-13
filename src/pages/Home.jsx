@@ -55,7 +55,7 @@ function Home() {
 
             <Box>
                <Typography variant="h6" color="secondary.light">
-                  avec "tu Casa" Ne t'embête pas à essayer de vendre ou de louer des maisons,
+                  avec 'tu Casa' Ne t'embête pas à essayer de vendre ou de louer des maisons,
                   installe-toi confortablement et explore.
                   <br /> Car nous le ferons pour toi.
                </Typography>
@@ -66,8 +66,8 @@ function Home() {
                   <Box onClick={() => navigate('/rentals')}>
                      <LoginButton content="Commencer" width="250px" />
                   </Box>
-                  <Box onClick={() => navigate('/about')}>
-                     <LoginButton content="à Propos" width="250px" />
+                  <Box onClick={() => navigate('/login')}>
+                     <LoginButton content="Connecter" width="250px" />
                   </Box>
                </Box>
             </Box>

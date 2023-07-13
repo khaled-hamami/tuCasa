@@ -8,9 +8,14 @@ import Home from './pages/Home'
 import Rentals from './pages/Rentals'
 import Login from './pages/Login'
 import Signup from './pages/Signup'
-import About from './pages/About'
+import Profile from './pages/Profile'
 import Error from './pages/Error'
 import ThemeToogler from './components/UIsettings/ThemeToogler'
+import { atom, useAtom } from 'jotai'
+
+// GLOBAL STATES
+export const GlobalUserInfo = atom(null)
+export const LoggedIn = atom(localStorage.getItem('isLoggedIn') || false)
 
 /*********************************************   THEMES    ***************************************** */
 
@@ -49,9 +54,16 @@ export const darkTheme = createTheme({
 })
 
 /*********************************************   APP COMPONENT    ***************************************** */
-
 function App() {
+   //theme states
    const [theme, setTheme] = useState(lightTheme)
+
+   //login Global State
+   const [isLoggedIn, setIsLoggedIn] = useAtom(LoggedIn)
+   //set state on page load and set it to false if there is no indicator in local storage
+   useEffect(() => {
+      setIsLoggedIn(localStorage.getItem('isLoggedIn') || false)
+   }, [])
 
    //set the background color for the whole project using theme  (its dynamic background color  thats why css wasnt used)
    document.body.style.backgroundColor = theme.palette.primary.main
@@ -77,7 +89,8 @@ function App() {
       }
    }, [])
 
-   //the component
+   /**********************************************   JSX   *******************************************/
+
    return (
       <Box sx={{ height: '100%', backgroundColor: theme.palette.primary.main }}>
          <ThemeProvider theme={theme}>
@@ -96,12 +109,12 @@ function App() {
                />
 
                <Routes>
-                  <Route path="/" Component={Home} />
-                  <Route path="/rentals" Component={Rentals} />
-                  <Route path="/login" Component={Login} />
-                  <Route path="/signup" Component={Signup} />
-                  <Route path="/about" Component={About} />
-                  <Route path="/*" Component={Error} />
+                  <Route path="/" element={<Home />} />
+                  <Route path="/rentals" element={<Rentals />} />
+                  <Route path="/login" element={<Login />} />
+                  <Route path="/signup" element={<Signup />} />
+                  <Route path="/profile" element={<Profile />} />
+                  <Route path="/*" element={<Error />} />
                </Routes>
             </Router>
          </ThemeProvider>
