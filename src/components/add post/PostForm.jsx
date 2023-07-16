@@ -4,7 +4,7 @@ import { yupResolver } from '@hookform/resolvers/yup'
 import { Close, PostAdd } from '@mui/icons-material'
 import { Box, Button, ButtonGroup, TextField, Typography } from '@mui/material'
 import styled from '@emotion/styled'
-import schema from './schema'
+import postSchema from '../../schemas/postShema'
 import DelegationList from './DelegationList'
 import createPost from '../../apis/createPost'
 
@@ -40,7 +40,7 @@ function PostForm({ setAddPostDisplay }) {
 
    /***********************    YUP INTEGRATION WITH REACT-HOOK-FORM       ***************/
 
-   const form = useForm({ resolver: yupResolver(schema) })
+   const form = useForm({ resolver: yupResolver(postSchema) })
 
    const { register, handleSubmit, formState } = form
    const { errors } = formState

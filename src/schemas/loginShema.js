@@ -1,11 +1,11 @@
 import * as yup from 'yup'
 
-const schema = yup.object({
+const loginSchema = yup.object({
    email: yup
       .string('une adresse e-mail  ne doit contenir que des caractères')
       .required("L'adresse e-mail est requise")
       .matches(
-         /^[a-zA-Z0-9.@]+$/,
+         /^[a-zA-Z0-9.@ éèà]+$/,
          'une adresse email ne doit contenir que des lettres, des chiffres, des points, et un arobase'
       )
       .email('Adresse e-mail invalide'),
@@ -14,8 +14,8 @@ const schema = yup.object({
       .required('Le mot de passe est requis')
       .max(30, 'un mot de passe est composées au maximum du  30 caractères')
       .matches(
-         /^[a-zA-Z0-9!#+*-_.]+$/,
+         /^[a-zA-Z0-9éèà!#+*-_.]+$/,
          'un mot de passe ne doit contenir que des lettres, des chiffres et ( ! # + * _ -  . )'
       ),
 })
-export default schema
+export default loginSchema

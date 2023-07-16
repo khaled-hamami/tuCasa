@@ -2,14 +2,14 @@ import React, { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { Box, Paper, TextField, Typography } from '@mui/material'
-import schema from './schema'
+import singupSchema from '../../schemas/signupSchema'
 import LoginButton from '../navbar/LoginButton'
 import createUser from '../../apis/createUser'
 
 function SignUpForm() {
    /***********************    YUP INTEGRATION WITH REACT-HOOK-FORM       ***************/
 
-   const form = useForm({ resolver: yupResolver(schema) })
+   const form = useForm({ resolver: yupResolver(singupSchema) })
    const { register, handleSubmit, formState } = form
    const { errors } = formState
 
@@ -73,6 +73,7 @@ function SignUpForm() {
                      {...register('firstName')}
                      error={errors.firstName ? true : false}
                      helperText={errors.firstName?.message}
+                     autoFocus
                   />
                   <TextField
                      name="lastName"

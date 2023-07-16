@@ -1,6 +1,8 @@
 const login = async (email, password, setFetching) => {
    setFetching(true)
+
    const URL = import.meta.env.VITE_LOGIN_KEY
+
    try {
       const response = await fetch(URL, {
          method: 'POST',
@@ -16,9 +18,9 @@ const login = async (email, password, setFetching) => {
       if (!response.ok) throw new Error('Email ou mot de passe incorrect')
 
       const data = await response.json()
-      //set the userId in local storage for post user id utility
+      //set the userId in local storage for when posting to include  user id
       localStorage.setItem('userId', data.payload._id)
-      //the the flag that the user is logged in local storage
+      //this flags the value in local storage when the user logges in
       localStorage.setItem('isLoggedIn', true)
 
       console.log(data)

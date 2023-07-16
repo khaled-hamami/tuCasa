@@ -38,6 +38,7 @@ function DelegationList({ setSelectedItem, name, registrer, error, helperText })
                error={error}
                helperText={helperText}
                label="Delegation"
+               autoFocus
             />
          )}
          PaperComponent={(props) => (

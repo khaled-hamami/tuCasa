@@ -1,18 +1,17 @@
 import React, { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
-import { Box, Paper, TextField, Typography } from '@mui/material'
+import { Box, Checkbox, FormControlLabel, Paper, TextField, Typography } from '@mui/material'
 import login from '../../apis/login'
-import schema from './shema'
-import RememberMe from './RememberMe'
 import LoginButton from '../navbar/LoginButton'
+import loginSchema from '../../schemas/loginShema'
 import SignUpLink from './SignUpLink'
 import ForgotYourPassword from './ForgotYourPassword'
 
 function LoginForm() {
    /***********************    YUP INTEGRATION WITH REACT-HOOK-FORM       ***************/
 
-   const form = useForm({ resolver: yupResolver(schema) })
+   const form = useForm({ resolver: yupResolver(loginSchema) })
    const { register, handleSubmit, formState } = form
    const { errors } = formState
 
@@ -73,6 +72,7 @@ function LoginForm() {
                      {...register('email')}
                      error={errors.email ? true : false}
                      helperText={errors.email?.message}
+                     autoFocus
                   />
                </Box>
                <Box p="0  30px">
@@ -90,7 +90,13 @@ function LoginForm() {
                      helperText={errors.password?.message}
                   />
                </Box>
-               <RememberMe />
+               <FormControlLabel
+                  name="rememberMe"
+                  labelPlacement="start"
+                  label="Se souvenir de moi"
+                  control={<Checkbox defaultChecked color="info" />}
+                  sx={{ flexDirection: 'row' }}
+               />
                <LoginButton width="40%" content="Connexion" type={'submit'} disabled={fetching} />
                <SignUpLink />
                <ForgotYourPassword />

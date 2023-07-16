@@ -12,6 +12,7 @@ import Profile from './pages/Profile'
 import Error from './pages/Error'
 import ThemeToogler from './components/UIsettings/ThemeToogler'
 import { atom, useAtom } from 'jotai'
+import ExpandedPost from './components/Posts/ExpandedPost'
 
 // GLOBAL STATES
 export const GlobalUserInfo = atom(null)
@@ -114,6 +115,7 @@ function App() {
                   <Route path="/login" element={<Login />} />
                   <Route path="/signup" element={<Signup />} />
                   <Route path="/profile" element={<Profile />} />
+                  <Route path="/posts/:PostId" element={<ExpandedPost />} />
                   <Route path="/*" element={<Error />} />
                </Routes>
             </Router>

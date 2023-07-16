@@ -21,7 +21,6 @@ const createUser = async (firstName, lastName, email, password, setFetching) => 
       if (!data) throw new Error()
 
       console.log(data)
-
       alert("L'utilisateur a etes crees avec succesée")
       window.location.replace('/login')
    } catch (err) {

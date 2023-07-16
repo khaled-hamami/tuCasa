@@ -34,14 +34,13 @@ const createPost = async (
       if (!respone.ok) throw new Error('Impossible de créer la publication.! ')
 
       const data = await respone.json()
-      location.reload()
-      alert('Publication créée avec succès')
-      console.log(respone)
       console.log(data)
-   } catch (err) {
+      alert('Publication créée avec succès')
       location.reload()
-      alert(err.message)
+   } catch (err) {
       console.log(err.message)
+      alert(err.message)
+      location.reload()
    }
    setFetching(false)
 }

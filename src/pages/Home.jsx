@@ -1,10 +1,11 @@
 import React from 'react'
-import { Box, Button, ButtonGroup, Container, IconButton, Typography } from '@mui/material'
+import { Box, Container, IconButton, Typography } from '@mui/material'
 import { red } from '@mui/material/colors'
 import { Mouse } from '@mui/icons-material'
 import { useNavigate } from 'react-router'
 import icon from '../assets/icon.png'
 import LoginButton from '../components/navbar/LoginButton'
+import Footer from '../components/footer/footer'
 
 function Home() {
    const navigate = useNavigate()
@@ -79,6 +80,7 @@ function Home() {
                </IconButton>
             </Box>
          </Container>
+         <Footer />
       </Box>
    )
 }

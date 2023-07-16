@@ -1,12 +1,12 @@
 import * as yup from 'yup'
 
-const schema = yup.object({
+const postSchema = yup.object({
    delegation: yup
       .string('la Delegation ne doit contenir que des caractères')
       .required('La Delegation est requis')
       .max(100, 'La Delegation ne doit pas dépasser 100 caractères')
       .min(3, 'La Delegation doit contenir au moins 3 caractères')
-      .matches(/^[a-zA-Z0-9 ]+$/, 'La Delegation ne doit contenir que des lettres et des chiffres'),
+      .matches(/^[a-zA-Z0-9 éèà]+$/, 'La Delegation ne doit contenir que des lettres et des chiffres'),
 
    preciseLocation: yup
       .string('le location ne doit contenir que des caractères')
@@ -14,7 +14,7 @@ const schema = yup.object({
       .max(50, 'Le location ne doit pas dépasser 50 caractères')
       .min(3, 'Le location doit contenir au moins 3 caractères')
       .matches(
-         /^[a-zA-Z0-9,+\n ]+$/,
+         /^[a-zA-Z0-9,+\n éèà]+$/,
          'Le location ne doit contenir que des lettres et des chiffres'
       ),
 
@@ -24,7 +24,7 @@ const schema = yup.object({
       .max(500, 'Le description ne doit pas dépasser 500 caractères')
       .min(10, 'Le description doit contenir au moins 10 caractères')
       .matches(
-         /^[a-zA-Z0-9,+\n ]+$/,
+         /^[a-zA-Z0-9,+\n éèà]+$/,
          'Le discription ne doit contenir que des lettres et des chiffres'
       ),
 
@@ -43,4 +43,4 @@ const schema = yup.object({
       .min(0, 'le nombre des chambres no doit etre un nombre négatif'),
 })
 
-export default schema
+export default postSchema

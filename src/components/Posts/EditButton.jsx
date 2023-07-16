@@ -2,7 +2,7 @@ import React from 'react'
 import styled from '@emotion/styled'
 import { Button } from '@mui/material'
 
-const CustomMuiButton = styled(Button)(({ theme }) => ({
+export const CustomMuiButton = styled(Button)(({ theme }) => ({
    fontSize: { xs: '.6rem', md: '.8em' },
    height: '40px',
    padding: '0 20px',
@@ -13,11 +13,13 @@ const CustomMuiButton = styled(Button)(({ theme }) => ({
    },
 }))
 
-function EditButton() {
+function EditButton({ id }) {
    return (
-      <CustomMuiButton variant="contained" size="large">
-         modifier
-      </CustomMuiButton>
+      <>
+         <CustomMuiButton variant="contained" size="large">
+            modifier
+         </CustomMuiButton>
+      </>
    )
 }
 
