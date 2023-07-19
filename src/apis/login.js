@@ -15,7 +15,7 @@ const login = async (email, password, setFetching) => {
          }),
       })
 
-      if (!response.ok) throw new Error('Email ou mot de passe incorrect')
+      if (!response.ok) throw new Error('something went wrong')
 
       const data = await response.json()
       //set the userId in local storage for when posting to include  user id

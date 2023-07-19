@@ -13,7 +13,7 @@ const createUser = async (firstName, lastName, email, password, setFetching) => 
          },
          body: JSON.stringify({ firstName, lastName, email, password }),
       })
-
+      console.log(respone)
       if (!respone.ok) throw new Error('Could not create user! ')
 
       const data = await respone.json()
