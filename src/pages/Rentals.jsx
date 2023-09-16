@@ -74,7 +74,7 @@ function Rentals() {
                })
             ) : (
                <Typography mt="25vw" variant="h4" color="secondary.main">
-                  no posts
+                  aucune publication
                </Typography>
             )}
          </Box>

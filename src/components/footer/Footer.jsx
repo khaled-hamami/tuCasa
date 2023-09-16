@@ -1,7 +1,10 @@
 import React from 'react'
 import { Box, Divider, IconButton, Typography } from '@mui/material'
 import { Email, Facebook, GitHub, LinkedIn } from '@mui/icons-material'
-
+import copyToClipboard from '../../utils/CopyToClipboard'
+const redirect = (link) => {
+   window.open(link, '_blank')
+}
 function Footer() {
    return (
       <Box
@@ -95,16 +98,18 @@ function Footer() {
                mb: '50px',
             }}
          >
-            <IconButton>
+            <IconButton
+               onClick={() => redirect('https://www.facebook.com/profile.php?id=100028537561096')}
+            >
                <Facebook />
             </IconButton>
-            <IconButton>
+            <IconButton onClick={() => redirect('https://www.linkedin.com/in/khaledhm')}>
                <LinkedIn />
             </IconButton>
-            <IconButton>
+            <IconButton onClick={() => redirect('https://github.com/khaled-hamami')}>
                <GitHub />
             </IconButton>
-            <IconButton>
+            <IconButton onClick={() => copyToClipboard()}>
                <Email />
             </IconButton>
          </Box>
