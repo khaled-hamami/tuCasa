@@ -13,7 +13,7 @@ Note: Make sure you have Node.js and npm installed on your machine before procee
 Usage
 Tu Casa is designed to be an intuitive and user-friendly website. Follow these instructions to use the application effectively:
 
-Visit the Tu Casa website: https://www.tuCasa.tn
+Visit the Tu Casa website: https://www.tuCasa.netlify.app
 Browse available house rentals by specifying your preferences such as location, price range, and property type.
 View detailed property listings, including descriptions, images, and contact information.
 Create an account to post house rentals, manage your listings, and communicate with potential tenants.
