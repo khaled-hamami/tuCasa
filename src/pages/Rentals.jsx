@@ -7,23 +7,41 @@ import MinimizedPost from '../components/Posts/MinimizedPost'
 import AddButton from '../components/add post/AddButton'
 import AddPost from '../components/add post/AddPost'
 import getPosts from '../apis/getPosts'
+import Popup from '../components/popup/Popup'
 
 function Rentals() {
    //the selected state from the list passed by jotai global state ('useatom')
    const [selectedDelegation] = useAtom(delegation)
    const [posts, setPosts] = useState([])
+   const [postsFetched, setPostsFetched] = useState('Téléchargement des publications.....')
+   const [errMessage, setErrorMessage] = useState('error')
+   //error popup
+   const [open, setOpen] = useState(false)
 
    //runs as soon as page loads or or selected delegation changes  to retrieve the posts
 
    useEffect(() => {
       const fetchData = async () => {
-         setPosts(await getPosts(selectedDelegation))
+         const fetchedPosts = await getPosts(selectedDelegation, setErrorMessage, setOpen)
+         setPosts(fetchedPosts)
+         return fetchedPosts // Returning the fetched posts to get the latest updated value
       }
-      fetchData()
+
+      setPostsFetched('Téléchargement des publications...')
+      //handle the current state of the posts
+      fetchData().then((fetchedPosts) => {
+         if (fetchedPosts.length === 0) {
+            setPostsFetched('Aucune Publication')
+         } else {
+            setPostsFetched('Téléchargement des publications....')
+         }
+      })
    }, [selectedDelegation])
 
    //controle the add post popup
    const [addPostDisplay, setAddPostDisplay] = useState(false)
+
+   //check if the posts are fetched to not display 'no posts' white the async function is fetching
 
    //the componnet
    return (
@@ -38,6 +56,7 @@ function Rentals() {
             sx={{ marginLeft: { md: '300px' } }}
             width="100%"
          >
+            {open && <Popup setOpen={setOpen} err={errMessage} />}
             <Typography
                variant="h5"
                sx={{
@@ -73,9 +92,21 @@ function Rentals() {
                   )
                })
             ) : (
-               <Typography mt="25vw" variant="h4" color="secondary.main">
-                  aucune publication
-               </Typography>
+               <Box
+                  style={{
+                     marginTop: '25vh',
+                  }}
+               >
+                  <Typography
+                     component="center"
+                     mx="15vw"
+                     variant="h6"
+                     whiteSpace="nowrap"
+                     color="secondary.main"
+                  >
+                     {postsFetched}
+                  </Typography>
+               </Box>
             )}
          </Box>
       </Box>

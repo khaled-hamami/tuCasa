@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react'
 import { BrowserRouter as Router } from 'react-router-dom'
 import { Routes, Route } from 'react-router'
 import { Box, ThemeProvider, createTheme } from '@mui/material'
-import './styles/App.css'
 import Navbar from './components/navbar/Navbar'
 import Home from './pages/Home'
 import Rentals from './pages/Rentals'
@@ -13,6 +12,7 @@ import Error from './pages/Error'
 import ThemeToogler from './components/UIsettings/ThemeToogler'
 import { atom, useAtom } from 'jotai'
 import ExpandedPost from './components/Posts/ExpandedPost'
+import './styles/App.css'
 
 // GLOBAL STATES
 export const GlobalUserInfo = atom(null)

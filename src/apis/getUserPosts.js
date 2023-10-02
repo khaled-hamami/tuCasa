@@ -1,4 +1,4 @@
-const getUserPosts = async () => {
+const getUserPosts = async (setErrorMessage, setOpen) => {
    const userId = localStorage.getItem('userId')
    const URL = import.meta.env.VITE_FETCH_USER_POSTS
    try {
@@ -15,7 +15,9 @@ const getUserPosts = async () => {
       const data = await response.json()
       if (data) return data
    } catch (err) {
-      alert(err)
+      console.log(err)
+      setErrorMessage(err.message)
+      setOpen(true)
       return []
    }
 }

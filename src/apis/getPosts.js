@@ -1,4 +1,4 @@
-const getPosts = async (delegation) => {
+const getPosts = async (delegation, setErrorMessage, setOpen) => {
    const URL = import.meta.env.VITE_FETCH_POSTS
    try {
       const response = await fetch(URL, {
@@ -13,7 +13,9 @@ const getPosts = async (delegation) => {
       const data = await response.json()
       if (data) return data
    } catch (err) {
-      alert(err)
+      setErrorMessage(err.message)
+      setOpen(true)
+      console.log(err)
       return []
    }
 }

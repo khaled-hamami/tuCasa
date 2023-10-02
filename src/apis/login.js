@@ -1,4 +1,4 @@
-const login = async (email, password, setFetching) => {
+const login = async (email, password, setFetching, setErrorMessage, setOpen) => {
    setFetching(true)
 
    const URL = import.meta.env.VITE_LOGIN_KEY
@@ -15,21 +15,23 @@ const login = async (email, password, setFetching) => {
          }),
       })
 
-      if (!response.ok) throw new Error('something went wrong')
-
       const data = await response.json()
+      if (!response.ok) throw new Error(data.error)
       //set the userId in local storage for when posting to include  user id
       localStorage.setItem('userId', data.payload._id)
+
       //this flags the value in local storage when the user logges in
       localStorage.setItem('isLoggedIn', true)
+      //set first name and last name
+      localStorage.setItem('userFirstName', data.payload.firstName)
+      localStorage.setItem('userLastName', data.payload.lastName)
 
       console.log(data)
-      alert('Connexion réussie')
       location.replace('/')
    } catch (err) {
-      console.log(err.message)
-      alert(err.message)
-      location.reload()
+      setErrorMessage(err.message)
+      setOpen(true)
+      console.log(err)
    }
    setFetching(false)
 }

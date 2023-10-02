@@ -5,7 +5,9 @@ const createPost = async (
    price,
    roomsNumber,
    uploadedImages,
-   setFetching
+   setFetching,
+   setErrorMessage,
+   setOpen
 ) => {
    //a state to disable the submit button to prevent multiple requests
    setFetching(true)
@@ -35,11 +37,11 @@ const createPost = async (
 
       const data = await respone.json()
       console.log(data)
-      alert('Publication créée avec succès')
       location.reload()
    } catch (err) {
-      console.log(err.message)
-      alert(err.message)
+      setErrorMessage(err.message)
+      setOpen(true)
+      console.log(err)
       location.reload()
    }
    setFetching(false)

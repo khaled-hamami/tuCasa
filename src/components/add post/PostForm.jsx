@@ -7,12 +7,16 @@ import styled from '@emotion/styled'
 import postSchema from '../../schemas/postShema'
 import DelegationList from './DelegationList'
 import createPost from '../../apis/createPost'
+import Popup from '../popup/Popup'
 
 function PostForm({ setAddPostDisplay }) {
    /********************** handle Image Upload  ***************************/
 
    const fileInputRef = useRef(null)
    const [uploadedImages, setUploadedImages] = useState([])
+   const [errMessage, setErrorMessage] = useState('error')
+   //error popup
+   const [open, setOpen] = useState(false)
 
    const handleImageUpload = (event) => {
       const files = event.target.files
@@ -58,7 +62,9 @@ function PostForm({ setAddPostDisplay }) {
             data.price,
             data.roomsNumber,
             uploadedImages,
-            setFetching
+            setFetching,
+            setErrorMessage,
+            setOpen
          )
       } else alert('please provide one image or more')
    }
@@ -82,110 +88,114 @@ function PostForm({ setAddPostDisplay }) {
    /***********************   THE COMPONENT   *************/
 
    return (
-      <form
-         onSubmit={handleSubmit(submit)}
-         style={{
-            width: '80%',
-            height: '100%',
-            display: 'flex',
-            flexDirection: 'column',
-            justifyContent: 'space-between',
-         }}
-      >
-         <Box
-            display="flex"
-            justifyContent="space-around"
-            alignItems="center"
-            gap="15px"
-            sx={{ flexDirection: { xs: 'column', sm: 'row' } }}
+      <>
+         {open && <Popup setOpen={setOpen} err={errMessage} />}
+
+         <form
+            onSubmit={handleSubmit(submit)}
+            style={{
+               width: '80%',
+               height: '100%',
+               display: 'flex',
+               flexDirection: 'column',
+               justifyContent: 'space-between',
+            }}
          >
-            <DelegationList
-               setSelectedItem={setSelectedItem}
-               name={'delegation'}
-               registrer={{ ...register('delegation') }}
-               error={errors.delegation ? true : false}
-               helperText={errors.delegation?.message}
-            />
+            <Box
+               display="flex"
+               justifyContent="space-around"
+               alignItems="center"
+               gap="15px"
+               sx={{ flexDirection: { xs: 'column', sm: 'row' } }}
+            >
+               <DelegationList
+                  setSelectedItem={setSelectedItem}
+                  name={'delegation'}
+                  registrer={{ ...register('delegation') }}
+                  error={errors.delegation ? true : false}
+                  helperText={errors.delegation?.message}
+               />
+               <TextField
+                  id="preciseLocation"
+                  name="preciseLocation"
+                  fullWidth
+                  color="info"
+                  label="Preciser Votre Location"
+                  multiline
+                  {...register('preciseLocation')}
+                  error={errors.preciseLocation ? true : false}
+                  helperText={errors.preciseLocation?.message}
+               />
+            </Box>
             <TextField
-               id="preciseLocation"
-               name="preciseLocation"
+               id="description"
+               name="description"
                fullWidth
                color="info"
-               label="Preciser Votre Location"
+               label="Description"
                multiline
-               {...register('preciseLocation')}
-               error={errors.preciseLocation ? true : false}
-               helperText={errors.preciseLocation?.message}
+               {...register('description')}
+               error={errors.description ? true : false}
+               helperText={errors.description?.message}
             />
-         </Box>
-         <TextField
-            id="description"
-            name="description"
-            fullWidth
-            color="info"
-            label="Description"
-            multiline
-            {...register('description')}
-            error={errors.description ? true : false}
-            helperText={errors.description?.message}
-         />
 
-         <Box
-            display="flex"
-            justifyContent="space-between"
-            alignItems="center"
-            sx={{ flexDirection: { xs: 'column', sm: 'row' }, gap: { xs: '30px', sm: '80px' } }}
-         >
-            <TextField
-               id="price"
-               name="price"
-               label="Prix"
-               color="info"
-               {...register('price')}
-               error={errors.price ? true : false}
-               helperText={errors.price?.message}
-            />
-            <TextField
-               id="roomsNumber"
-               name="roomsNumber"
-               label=" Nombre des chambres"
-               color="info"
-               {...register('roomsNumber')}
-               error={errors.roomsNumber ? true : false}
-               helperText={errors.roomsNumber?.message}
-            />
-         </Box>
-         <>
-            <input
-               type="file"
-               accept=".png , .jpg , .jpeg"
-               onChange={handleImageUpload}
-               style={{ display: 'none' }}
-               ref={fileInputRef}
-               multiple
-            />
-            <Button variant="contained" color="primary" onClick={handleButtonClick}>
-               Importer des images
-            </Button>
-            <Typography>Images importées : {uploadedImages.length}</Typography>
-         </>
-
-         <ButtonGroup fullWidth sx={{ gap: { xs: '20px', md: '50px' } }}>
-            <CustomButton
-               onClick={() => setAddPostDisplay(false)}
-               variant="contained"
-               size="small"
-               disabled={fetching}
+            <Box
+               display="flex"
+               justifyContent="space-between"
+               alignItems="center"
+               sx={{ flexDirection: { xs: 'column', sm: 'row' }, gap: { xs: '30px', sm: '80px' } }}
             >
-               Annuler&nbsp;
-               <Close />
-            </CustomButton>
-            <CustomButton size="small" variant="contained" type="submit" disabled={fetching}>
-               Confirmer&nbsp;
-               <PostAdd />
-            </CustomButton>
-         </ButtonGroup>
-      </form>
+               <TextField
+                  id="price"
+                  name="price"
+                  label="Prix"
+                  color="info"
+                  {...register('price')}
+                  error={errors.price ? true : false}
+                  helperText={errors.price?.message}
+               />
+               <TextField
+                  id="roomsNumber"
+                  name="roomsNumber"
+                  label=" Nombre des chambres"
+                  color="info"
+                  {...register('roomsNumber')}
+                  error={errors.roomsNumber ? true : false}
+                  helperText={errors.roomsNumber?.message}
+               />
+            </Box>
+            <>
+               <input
+                  type="file"
+                  accept=".png , .jpg , .jpeg"
+                  onChange={handleImageUpload}
+                  style={{ display: 'none' }}
+                  ref={fileInputRef}
+                  multiple
+               />
+               <Button variant="contained" color="primary" onClick={handleButtonClick}>
+                  Importer des images
+               </Button>
+               <Typography>Images importées : {uploadedImages.length}</Typography>
+            </>
+
+            <ButtonGroup fullWidth sx={{ gap: { xs: '20px', md: '50px' } }}>
+               <CustomButton
+                  onClick={() => setAddPostDisplay(false)}
+                  variant="contained"
+                  size="small"
+                  disabled={fetching}
+               >
+                  Annuler&nbsp;
+                  <Close />
+               </CustomButton>
+               <CustomButton size="small" variant="contained" type="submit" disabled={fetching}>
+                  Confirmer&nbsp;
+                  <PostAdd />
+               </CustomButton>
+            </ButtonGroup>
+         </form>
+      </>
    )
 }
 

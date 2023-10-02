@@ -1,4 +1,12 @@
-const createUser = async (firstName, lastName, email, password, setFetching) => {
+const createUser = async (
+   firstName,
+   lastName,
+   email,
+   password,
+   setFetching,
+   setErrorMessage,
+   setOpen
+) => {
    //a state to disable the submit button to prevent multiple requests
    setFetching(true)
 
@@ -24,9 +32,9 @@ const createUser = async (firstName, lastName, email, password, setFetching) => 
       alert("L'utilisateur a été créé avec succès")
       window.location.replace('/login')
    } catch (err) {
-      console.log(err.message)
-      alert('erreur de connexion du serveur')
-      //location.reload()
+      setErrorMessage(err.message)
+      setOpen(true)
+      console.log(err)
    }
    setFetching(false)
 }

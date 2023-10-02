@@ -1,5 +1,5 @@
 import React from 'react'
-import { Box, Container, IconButton, Typography } from '@mui/material'
+import { Box, Button, Container, IconButton, Typography } from '@mui/material'
 import { red } from '@mui/material/colors'
 import { Mouse } from '@mui/icons-material'
 import { useNavigate } from 'react-router'
@@ -73,14 +73,21 @@ function Home() {
                </Box>
             </Box>
             <Box>
-               <IconButton>
-                  <Mouse />
-                  &nbsp;&nbsp;
-                  <Typography> Défilez pour plus de contenu</Typography>
-               </IconButton>
+               <Button
+                  sx={{
+                     color: 'secondary.main',
+                  }}
+                  variant="h6"
+                  endIcon={<Mouse sx={{ color: 'secondary.main' }} />}
+                  href="#footer"
+               >
+                  Défilez pour plus de contenu
+               </Button>
             </Box>
          </Container>
-         <Footer />
+         <Box id="footer">
+            <Footer />
+         </Box>
       </Box>
    )
 }

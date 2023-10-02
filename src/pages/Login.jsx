@@ -13,15 +13,24 @@ function Login() {
       localStorage.removeItem('userId')
       localStorage.removeItem('Theme')
       localStorage.removeItem('isLoggedIn')
+      localStorage.removeItem('userFirstName')
+      localStorage.removeItem('userLastName')
       setIsLoggedIn(false)
       location.reload()
    }
-
    return (
       <Box sx={{ height: 'auto', width: '100%', backgroundColor: 'primary.main' }}>
          {isLoggedIn ? (
-            <Box onClick={handleLogOut} pt="25px">
-               <LoginButton content="deconnecter" />
+            <Box
+               width="100%"
+               display="flex"
+               justifyContent="center"
+               height="100vh"
+               alignItems="center"
+            >
+               <Box onClick={() => handleLogOut()}>
+                  <LoginButton content="deconnecter" />
+               </Box>
             </Box>
          ) : (
             <LoginForm />
