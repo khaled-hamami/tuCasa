@@ -29,7 +29,6 @@ const createUser = async (
       if (!data) throw new Error()
 
       console.log(data)
-      alert("L'utilisateur a été créé avec succès")
       window.location.replace('/login')
    } catch (err) {
       setErrorMessage(err.message)
