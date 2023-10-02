@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import '../../styles/CustomScrollBar.css'
+import '../../styles/customScrollBar.css'
 import { Box, ListItemIcon, Collapse, List, ListItemButton, ListItemText } from '@mui/material'
 import StatesData from '../../assets/data.json'
 import { delegation } from '../city list/CityList'
