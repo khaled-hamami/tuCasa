@@ -3,7 +3,7 @@ import { Box, Paper, Typography, Button } from '@mui/material'
 import styled from '@emotion/styled'
 import { useNavigate } from 'react-router'
 import EditButton from './EditButton'
-import DeleteButton from './deleteButton'
+import DeleteButton from './DeleteButton'
 
 const CustomMuiButton = styled(Button)(({ theme }) => ({
    fontSize: { xs: '.6rem', md: '.8em' },
