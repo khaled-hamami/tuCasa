@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
-import '../../styles/CustomScrollBar.css'
 import { Box, List, ListItemButton, ListItemText, ListItemIcon, Collapse } from '@mui/material'
 import { ExpandLess, ExpandMore, Flag } from '@mui/icons-material'
 import { atom, useAtom } from 'jotai'
 import StatesData from '../../assets/data.json'
+import '../../styles/customScrollBar.css'
 
 const StateList = StatesData.data
 
