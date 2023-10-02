@@ -5,7 +5,7 @@ import { Mouse } from '@mui/icons-material'
 import { useNavigate } from 'react-router'
 import icon from '../assets/icon.png'
 import LoginButton from '../components/navbar/LoginButton'
-import Footer from '../components/footer/footer'
+import Footer from '../components/pageFooter/Footer'
 
 function Home() {
    const navigate = useNavigate()

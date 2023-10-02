@@ -5,7 +5,7 @@ import copyToClipboard from '../../utils/CopyToClipboard'
 const redirect = (link) => {
    window.open(link, '_blank')
 }
-function Footer() {
+export default function Footer () {
    return (
       <Box
          display="flex"
@@ -139,4 +139,3 @@ function Footer() {
    )
 }
 
-export default Footer
