@@ -22,18 +22,19 @@ const createUser = async (
          body: JSON.stringify({ firstName, lastName, email, password }),
       })
       console.log(respone)
-      if (!respone.ok) throw new Error('Could not create user! ')
+      if (!respone.ok)
+         throw new Error('Une erreur se produite lors de la connexion avec le serveur.')
 
       const data = await respone.json()
 
-      if (!data) throw new Error()
+      if (!data) throw new Error("impossible de créer l'utilisateur.")
 
       console.log(data)
-      window.location.replace('/login')
+      location.replace('/login')
    } catch (err) {
+      err.message == 'Failed to fetch' ? (err.message = 'Erreur inattendue') : null
       setErrorMessage(err.message)
       setOpen(true)
-      console.log(err)
    }
    setFetching(false)
 }

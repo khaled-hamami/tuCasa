@@ -13,8 +13,9 @@ function LoginButton({ width, content, type, disabled }) {
                width: { width },
                p: '.5rem 1.5rem',
                fontWeight: 'bold',
-               backgroundColor: 'secondary.dark',
-               color: 'primary.light',
+               backgroundColor: 'primary.dark',
+               boxShadow:'none',
+               color: 'secondary.light',
                '&:hover': {
                   backgroundColor: 'primary.light',
                   color: 'info.main',

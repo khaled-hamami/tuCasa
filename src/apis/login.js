@@ -14,25 +14,24 @@ const login = async (email, password, setFetching, setErrorMessage, setOpen) => 
             password,
          }),
       })
+      if (!response.ok) throw new Error(await response.json())
 
       const data = await response.json()
-      if (!response.ok) throw new Error(data.error)
-      //set the userId in local storage for when posting to include  user id
-      localStorage.setItem('userId', data.payload._id)
+      if (!data.payload || !data.payload._id)
+         throw new Error('Une erreur se produite lors de la connexion avec le serveur.')
 
-      //this flags the value in local storage when the user logges in
+      localStorage.setItem('userId', data.payload._id)
       localStorage.setItem('isLoggedIn', true)
-      //set first name and last name
       localStorage.setItem('userFirstName', data.payload.firstName)
       localStorage.setItem('userLastName', data.payload.lastName)
 
-      console.log(data)
       location.replace('/')
    } catch (err) {
-      setErrorMessage(err.message)
+      err.message == 'Failed to fetch' ? (err.message = 'Erreur inattendue') : null
+      setErrorMessage(err.message || 'Erreur inattendue')
       setOpen(true)
-      console.log(err)
+   } finally {
+      setFetching(false)
    }
-   setFetching(false)
 }
 export default login

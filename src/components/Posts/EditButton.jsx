@@ -16,7 +16,10 @@ export const CustomMuiButton = styled(Button)(({ theme }) => ({
 function EditButton({ id }) {
    return (
       <>
-         <CustomMuiButton variant="contained" size="large">
+         <CustomMuiButton
+            variant="contained"
+            sx={{ width: { xs: '100px', sm: '110px', md: '130px' } }}
+         >
             modifier
          </CustomMuiButton>
       </>

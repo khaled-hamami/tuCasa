@@ -4,6 +4,7 @@ import styled from '@emotion/styled'
 import { useNavigate } from 'react-router'
 import EditButton from './EditButton'
 import DeleteButton from './DeleteButton'
+import ContactButton from './ContactButton'
 
 const CustomMuiButton = styled(Button)(({ theme }) => ({
    fontSize: { xs: '.6rem', md: '.8em' },
@@ -16,12 +17,12 @@ const CustomMuiButton = styled(Button)(({ theme }) => ({
    },
 }))
 
-function MinimizedPost({ id, images, location, price, edit }) {
+function MinimizedPost({ id, images, location, price, edit ,userId}) {
    const navigate = useNavigate()
    return (
       <Box
          sx={{
-            width: { xs: '90%', md: '45%' },
+            width: { xs: '90%', sm: '75%', md: '70%', lg: '50%' },
             margin: '100px auto',
             display: 'flex',
             justifyContent: 'center',
@@ -45,36 +46,67 @@ function MinimizedPost({ id, images, location, price, edit }) {
             }}
          >
             <Box width="100%" height="80%">
-               <Box width="100%" height="80%">
+               <Box width="100%" height={images.length > 1 ? '80%' : '100%'}>
                   <img src={images[0]} width="100%" height="100%" style={{ borderRadius: '3px' }} />
                </Box>
-               <Box
-                  width="100%"
-                  height="20%"
-                  bgcolor="grey"
-                  display="flex"
-                  justifyContent="center"
-                  alignItems={'center'}
-                  border="solid .1px"
-                  borderColor="rgba(150,150,150,.5)"
-               >
-                  <Typography variant="h3">
-                     {images.length > 1 ? `+${images.length - 1}` : ''}
-                  </Typography>
-               </Box>
+
+               {images.length > 1 && (
+                  <div style={{ position: 'relative', width: '100%', height: '20%' }}>
+                     <img
+                        src={images[1]}
+                        style={{
+                           width: '100%',
+                           height: '100%',
+                           filter: 'blur(5px)',
+                           objectFit: 'cover',
+                           position: 'absolute',
+                           top: 0,
+                           left: 0,
+                           zIndex: 10,
+                        }}
+                     />
+                     <div
+                        style={{
+                           display: 'flex',
+                           justifyContent: 'center',
+                           alignItems: 'center',
+                           position: 'absolute',
+                           top: 0,
+                           left: 0,
+                           width: '100%',
+                           height: '100%',
+                           zIndex: 11,
+                        }}
+                     >
+                        <Typography variant="h3">
+                           {images.length > 1 ? `+${images.length - 1}` : ''}
+                        </Typography>
+                     </div>
+                  </div>
+               )}
             </Box>
             <Box display="flex" justifyContent="space-between">
                <Box>
                   <Typography variant="h6">{location}</Typography>
                   <Typography variant="h6">{price}dt</Typography>
                </Box>
+               <Box
+                  sx={{
+                     width: '60%',
+                     display: 'flex',
+                     alignItems: 'center',
+                     justifyContent: 'space-between',
+                     flexDirection: { xs: 'column', sm: 'row' },
+                  }}
+               >
+                  <CustomMuiButton variant="contained" onClick={() => navigate(`/posts/${id}`)}>
+                     Agrandir
+                  </CustomMuiButton>
+                  {!edit && <ContactButton id={userId} />}
 
-               <CustomMuiButton variant="contained" onClick={() => navigate(`/posts/${id}`)}>
-                  Agrandir
-               </CustomMuiButton>
-
-               {edit && <EditButton id={id} />}
-               {edit && <DeleteButton id={id} />}
+                  {edit && <EditButton id={id} />}
+                  {edit && <DeleteButton id={id} />}
+               </Box>
             </Box>
          </Paper>
       </Box>

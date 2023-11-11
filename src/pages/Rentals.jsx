@@ -88,6 +88,7 @@ function Rentals() {
                         price={post.price}
                         images={post.uploadedImages}
                         edit={false}
+                        userId={post.userId}
                      />
                   )
                })

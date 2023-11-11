@@ -10,12 +10,14 @@ const getUserPosts = async (setErrorMessage, setOpen) => {
          }),
       })
 
-      if (!response.ok) throw new Error('Unable to get posts')
-
+      if (!response.ok)
+         throw new Error('Une erreur se produite lors de la connexion avec le serveur.')
       const data = await response.json()
-      if (data) return data
+      if (!data)
+         throw new Error('Une erreur se produit lors du téléchargement des données du serveur.')
+      return data
    } catch (err) {
-      console.log(err)
+      err.message == 'Failed to fetch' ? (err.message = 'Erreur inattendue') : null
       setErrorMessage(err.message)
       setOpen(true)
       return []

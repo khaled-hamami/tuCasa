@@ -173,7 +173,7 @@ function PostForm({ setAddPostDisplay }) {
                   ref={fileInputRef}
                   multiple
                />
-               <Button variant="contained" color="primary" onClick={handleButtonClick}>
+               <Button variant="contained" sx={{ color: 'info.main' }} onClick={handleButtonClick}>
                   Importer des images
                </Button>
                <Typography>Images importées : {uploadedImages.length}</Typography>

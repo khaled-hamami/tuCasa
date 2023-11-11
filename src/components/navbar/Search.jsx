@@ -1,6 +1,6 @@
 import React from 'react'
 import { Box, InputBase } from '@mui/material'
-
+import '../../styles/index.css'
 function Search() {
    return (
       <Box
@@ -19,12 +19,19 @@ function Search() {
             fullWidth
             sx={{
                maxWidth: '300px',
-               backgroundColor: 'secondary.light',
-               color: 'primary.dark',
+               backgroundColor: 'primary.light',
+               color: 'secondary.dark',
+               fontWeight: 'bold',
                p: '0px 5px',
                borderRadius: '5px',
+               '&:hover': {
+                  border: '1px solid #aaa',
+               },
+               '&.Mui-focused': {
+                  border: '1px solid rgb(0, 0, 0)',
+               },
             }}
-         ></InputBase>
+         />
       </Box>
    )
 }

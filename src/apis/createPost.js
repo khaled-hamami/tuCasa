@@ -33,15 +33,17 @@ const createPost = async (
          }),
       })
 
-      if (!respone.ok) throw new Error('Impossible de créer la publication.! ')
+      if (!respone.ok)
+         throw new Error('Une erreur se produite lors de la connexion avec le serveur.')
 
       const data = await respone.json()
+      if (!data) throw new Error('Impossible de créer une publication.')
       console.log(data)
-      location.reload()
+      location.replace('/profile')
    } catch (err) {
+      err.message == 'Failed to fetch' ? (err.message = 'Erreur inattendue') : null
       setErrorMessage(err.message)
       setOpen(true)
-      console.log(err)
       location.reload()
    }
    setFetching(false)

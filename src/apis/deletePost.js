@@ -8,11 +8,12 @@ const deletePost = async (postId, setIsFetching, setErrorMessage, setOpen) => {
          body: JSON.stringify({ postId: postId }),
       })
 
-      if (!response.ok) throw new Error()
-      const data = await response.json()
+      if (!response.ok)
+      throw new Error('Une erreur se produite lors de la connexion avec le serveur.')
+
       location.reload()
    } catch (err) {
-      console.log(err)
+      err.message == 'Failed to fetch' ? (err.message = 'Erreur inattendue') : null
       setErrorMessage(err.message)
       setOpen(true)
       location.reload()
