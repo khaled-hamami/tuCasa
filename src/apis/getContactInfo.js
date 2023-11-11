@@ -1,5 +1,5 @@
-const URL = import.meta.env.VITE_GET_CONTACT
 const getContactInfo = async (id, setResult, setOpen) => {
+   const URL = import.meta.env.VITE_GET_CONTACT
    console.log(URL)
    try {
       const response = await fetch(URL, {
